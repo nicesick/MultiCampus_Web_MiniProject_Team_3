@@ -2,26 +2,26 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mapper.preferenceMapper">
+<mapper namespace="com.mapper.hintMapper">
 
 	
 	<select id="select" parameterType="String" 
 	resultType="String">
-		SELECT food_id FROM Preference WHERE ID=#{id}
+		SELECT QUESTION FROM hint WHERE ID=#{id}
 	</select>
 	
 	<select id="selectall" 
 	resultType="String">
-		SELECT * FROM Preference ORDER BY 1
+		SELECT QUESTION FROM hint ORDER BY 1
 	</select>
 	<insert id="insert" parameterType="String">
-		INSERT INTO Preference VALUES (#{param1},#{param2})
+		INSERT INTO hint VALUES (SEQ_CATEGORY.nextval,#{param2})
 	</insert>
 	<update id="update" parameterType="String">
-		UPDATE Preference SET FOOD_ID =#{param2} WHERE ID=#{param1}
+		UPDATE hint SET PWD=NAME=#{param2} WHERE ID=#{param1}
 	</update>
 	<delete id="delete" parameterType="String">
-		DELETE FROM Preference WHERE ID=#{user_id}
+		DELETE FROM hint WHERE ID=#{id}
 	</delete>
 	
 </mapper>
