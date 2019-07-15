@@ -1,4 +1,4 @@
-package com.category;
+package com.hint;
 
 import java.util.ArrayList;
 
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 import com.frame.StringBiz;
 import com.frame.StringDao;
 
-@Component("CategoryBiz")
-public class categoryBiz implements StringBiz<String, String> {
+@Component("HintBiz")
+public class hintBiz implements StringBiz<String, String> {
 
-	@Resource(name="CategoryDao")
+	@Resource(name="HintDao")
 	StringDao<String,String> dao;
 	
 	@Override

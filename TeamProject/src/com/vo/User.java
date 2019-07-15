@@ -13,6 +13,16 @@ public class User {
 
 	
 
+	public User(String pwd, String name, int hint, String hint_answer) {
+		super();
+		this.pwd = pwd;
+		this.name = name;
+		this.hint = hint;
+		this.hint_answer = hint_answer;
+	}
+
+
+
 	public User(String id, String pwd, String name, int hint, String hint_answer) {
 		super();
 		this.id = id;

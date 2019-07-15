@@ -1,13 +1,12 @@
 package com.mapper;
 
 import java.util.ArrayList;
-import com.vo.User;
 
 public interface preferenceMapper {
-	public void insert(String obj);
-	public void delete(String obj);
-	public void update(String obj);
-	public String select(String obj);
+	public void insert(String User_id,String food_id);
+	public void delete(String User_id);
+	public void update(String User_id,String food_id);
+	public ArrayList<String> select(String User_id);
 	public ArrayList<String> selectall();
 }
 

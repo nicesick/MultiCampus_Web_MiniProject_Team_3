@@ -11,40 +11,40 @@ import com.frame.ObjectDao;
 import com.vo.Board;
 
 
-@Component("boardBiz")
+@Component("BoardBiz")
 public class boardBiz implements ObjectBiz<String, Board> {
 
-	@Resource(name="boardDao")
+	@Resource(name="BoardDao")
 	ObjectDao<String,Board> dao;
 	
 	@Override
 	public void insert(Board v) {
 		// TODO Auto-generated method stub
-		
+		dao.insert(v);
 	}
 
 	@Override
 	public void delete(String k) {
 		// TODO Auto-generated method stub
-		
+		dao.delete(k);
 	}
 
 	@Override
 	public void update(Board v) {
 		// TODO Auto-generated method stub
-		
+		dao.update(v);
 	}
 
 	@Override
 	public Board select(String k) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.select(k);
 	}
 
 	@Override
 	public ArrayList<Board> selectAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.selectAll();
 	}
 
 

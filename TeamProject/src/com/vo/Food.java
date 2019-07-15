@@ -10,6 +10,20 @@ public class Food {
 	public Food() {
 		super();
 	}
+	
+	
+	//id가 없음, insert 용
+	public Food(String name, String imgName1, String imgName2, String imgName3, int category) {
+		super();
+		this.name = name;
+		this.imgName1 = imgName1;
+		this.imgName2 = imgName2;
+		this.imgName3 = imgName3;
+		this.category = category;
+	}
+
+
+	//id가 있음, 그외
 	public Food(int id, String name, String imgName1, String imgName2, String imgName3, int category) {
 		super();
 		this.id = id;

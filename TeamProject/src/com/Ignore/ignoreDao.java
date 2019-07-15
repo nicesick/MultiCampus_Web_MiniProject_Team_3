@@ -2,32 +2,41 @@ package com.Ignore;
 
 import java.util.ArrayList;
 
-import com.frame.StringDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import com.frame.StringDao;
+import com.mapper.ignoreMapper;
+
+
+@Component("IgnoreDao")
 public class ignoreDao implements StringDao<String,String> {
 
+	@Autowired
+	ignoreMapper im;
+	
 	@Override
-	public void insert(String v) {
+	public void insert(String user_id,String food_id) {
 		// TODO Auto-generated method stub
-		
+		im.insert(user_id, food_id);
 	}
 
 	@Override
-	public void delete(String k) {
+	public void delete(String user_id) {
 		// TODO Auto-generated method stub
-		
+		im.delete(user_id);
 	}
 
 	@Override
-	public void update(String v) {
+	public void update(String user_id,String food_id) {
 		// TODO Auto-generated method stub
-		
+		im.update(user_id, food_id);
 	}
 
 	@Override
-	public ArrayList<String> select(String k) {
+	public ArrayList<String> select(String user_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return im.select(user_id);
 	}
 
 	@Override
@@ -35,5 +44,7 @@ public class ignoreDao implements StringDao<String,String> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }
