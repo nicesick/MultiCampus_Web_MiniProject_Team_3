@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.foodMapper">
+
+	
+	<select id="select" parameterType="String" 
+	resultType="user">
+		SELECT * FROM T_USER WHERE ID=#{id}
+	</select>
+	
+	<select id="selectall" 
+	resultType="user">
+		SELECT * FROM T_USER ORDER BY 1
+	</select>
+	<insert id="insert" parameterType="user">
+		INSERT INTO T_USER VALUES (#{id},#{password},#{name})
+	</insert>
+	<update id="update" parameterType="user">
+		UPDATE TB_CUST SET PWD=#{password},NAME=#{name} WHERE ID=#{id}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM TB_USER WHERE ID=#{id}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
