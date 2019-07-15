@@ -1,0 +1,75 @@
+create table W_User(
+Id varchar2(20) primary key,
+pwd varchar2(20) not null,
+name varchar2(10) not null,
+hint int constraint hint_reference references hint(id) on delete cascade,
+hint_answer varchar2(20) not null
+);
+
+create table Category(
+id int primary key,
+question varchar2(15) not null
+);
+
+create table hint(
+id int primary key,
+name varchar2(20)
+);
+
+ create table food(
+id int primary key,
+name varchar2(10) not null,
+imgname1 varchar2(50),
+imgname2 varchar2(50),
+imgname3 varchar2(50),
+Category int constraint food_reference references Category(id) ond delete cascade
+);
+
+
+create table Preference(
+user_id varchar2(20) constraint user_id_reference references W_User(id) on delete cascade,
+food_id int constraint food_id_reference references food(id) on delete cascade,
+constraint Preference_primary_key primary key(user_id,food_id)
+);
+
+create table Ignore(
+user_id varchar2(20) constraint user_id_reference references W_User(id) on delete cascade,
+food_id int constraint food_id_reference references food(id) on delete cascade,
+constraint Ignore_primary_key primary key(user_id,food_id)
+);
+
+create table board(
+id int primary key,
+author varchar2(20) references W_user(id) on delete cascade,
+imgname1 varchar2(20),
+imgname2 varchar2(20),
+imgname3 varchar2(20),
+title varchar2(20) not null,
+viewCount int,
+content varchar2(200),
+re_id int  references board(id)
+);
+
+CREATE SEQUENCE SEQ_BOARD
+START WITH 1000
+INCREMENT BY 1
+
+CREATE SEQUENCE SEQ_HINT
+START WITH 1000
+INCREMENT BY 1
+
+CREATE SEQUENCE SEQ_PREFERENCE
+START WITH 1000
+INCREMENT BY 1
+
+CREATE SEQUENCE SEQ_FOOD
+START WITH 1000
+INCREMENT BY 1
+
+CREATE SEQUENCE SEQ_IGNORE
+START WITH 1000
+INCREMENT BY 1
+
+CREATE SEQUENCE SEQ_CATEGORY
+START WITH 1000
+INCREMENT BY 1
