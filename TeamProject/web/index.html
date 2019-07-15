@@ -4,31 +4,13 @@
 <head>
 	<title>HTML5 Canvas Winning Wheel</title>
 	<link rel="stylesheet" href="main.css" type="text/css" />
+	<link rel="stylesheet" href="main.css" type="text/css" />
+	<link rel="stylesheet" href="css/kakaoMap.css">
 
-	<script type="text/javascript" src="js/Winwheel.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-
-	<script>
-		function delete1() {
-			$('html, body').animate({
-				scrollTop: target.offset().top - top_space
-			}, 1500, 'easeInOutExpo');
-		};
-
-
-		$(document).ready(function () {
-			$('.go_to_roullet').click(function () {
-				location.href = "#slide03";
-			});
-		});
-
-
-
-
-
-	</script>
-
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b2a7e0e084f426a0d438fa0599527b5e&libraries=services"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -178,8 +160,9 @@ https://templatemo.com/tm-528-elegance
 										<div class="about-contentbox">
 											<div class="animate" data-animate="fadeInUp">
 
-												<h2 align="center">룰렛</h2>
-												<div>
+												<div align="center">
+													<h1>룰렛</h1>
+													<h2>&nbsp;▼</h2>
 
 
 													<table cellpadding="0" cellspacing="0" border="0">
@@ -207,22 +190,18 @@ https://templatemo.com/tm-528-elegance
 																		</tr>
 																	</table>
 																	<br />
-																	<img id="spin_button" src="images/button1.jpg"
-																		alt="Spin" onClick="startSpin();" />
+																	<img id="spin_button" src="spin_off.png"
+																		alt="Spin" />
 																	<br /><br />
-																	&nbsp;&nbsp;<a href="#"
-																		onClick="resetWheel(); return false;">다시
-																		돌리기</a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																	&nbsp;&nbsp;<a href="#" id="resetWheel" return
+																		false;">Play
+																		Again</a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reset)
 																</div>
 															</td>
-															<td width="400" height="582" class="the_wheel"
+															<td width="438" height="582" class="the_wheel"
 																align="center" valign="center">
 																<canvas id="canvas" width="434" height="434">
-																	<img src="images/wheel_back.png" width="150"
-																		height="150" alt="" />
-																	<p style="color: white" align="center">Sorry, your
-																		browser doesn't support canvas. Please try
-																		another.</p>
+
 																</canvas>
 															</td>
 														</tr>
@@ -230,158 +209,11 @@ https://templatemo.com/tm-528-elegance
 												</div>
 
 												<script>
-													// Create new wheel object specifying the parameters at creation time.
-
-													var numSegments=0;
-													var FoodList = new Array();
-													
-													$(document).ready(function () {
 
 
-														$('.p_add').click(function () {
-															numSegments++;
-															//	theWheel.segments.push({'fillStyle' : '#EAEAEA', 'text' : '된장찌개'});
-
-															FoodList.push({ 'fillStyle': '#EAEAEA', 'text': '된장찌개' });
-															alert(FoodList);
-
-                                                     	});
-													});
-													
-
-													let theWheel = new Winwheel({
-
-														'numSegments': numSegments,     // Specify number of segments.
-														'outerRadius': 212,   // Set outer radius so wheel fits inside the background.
-														'textFontSize': 28,    // Set font size as desired.
-														'segments': FoodList,       // Define segments including colour and text.
-
-														'animation':           // Specify the animation to use.
-														{
-															'type': 'spinToStop',
-															'duration': 15,
-															'spins': 10,
-															'callbackFinished': alertPrize,
-															'callbackSound': playSound,   // Function to call when the tick sound is to be triggered.
-															'soundTrigger': 'pin'        // Specify pins are to trigger the sound, the other option is 'segment'.
-														},
-														'pins':
-														{
-															'number': 16   // Number of pins. They space evenly around the wheel.
-														}
-													});
-
-													
-
-													// -----------------------------------------------------------------
-													// This function is called when the segment under the prize pointer changes
-													// we can play a small tick sound here like you would expect on real prizewheels.
-													// -----------------------------------------------------------------
-													let audio = new Audio('tick.mp3');  // Create audio object and load tick.mp3 file.
-
-													function playSound() {
-														// Stop and rewind the sound if it already happens to be playing.
-														audio.pause();
-														audio.currentTime = 0;
-
-														// Play the sound.
-														audio.play();
-													}
-
-													// -------------------------------------------------------
-													// Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters
-													// note the indicated segment is passed in as a parmeter as 99% of the time you will want to know this to inform the user of their prize.
-													// -------------------------------------------------------
-													function alertPrize(indicatedSegment) {
-														// Do basic alert of the segment text.
-														// You would probably want to do something more interesting with this information.
-														alert("You have won " + indicatedSegment.text);
-													}
-
-													// =======================================================================================================================
-													// Code below for the power controls etc which is entirely optional. You can spin the wheel simply by
-													// calling theWheel.startAnimation();
-													// =======================================================================================================================
-													let wheelPower = 0;
-													let wheelSpinning = false;
-
-													// -------------------------------------------------------
-													// Function to handle the onClick on the power buttons.
-													// -------------------------------------------------------
-													function powerSelected(powerLevel) {
-														// Ensure that power can't be changed while wheel is spinning.
-														if (wheelSpinning == false) {
-															// Reset all to grey incase this is not the first time the user has selected the power.
-															document.getElementById('pw1').className = "";
-															document.getElementById('pw2').className = "";
-															document.getElementById('pw3').className = "";
-
-															// Now light up all cells below-and-including the one selected by changing the class.
-															if (powerLevel >= 1) {
-																document.getElementById('pw1').className = "pw1";
-															}
-
-															if (powerLevel >= 2) {
-																document.getElementById('pw2').className = "pw2";
-															}
-
-															if (powerLevel >= 3) {
-																document.getElementById('pw3').className = "pw3";
-															}
-
-															// Set wheelPower var used when spin button is clicked.
-															wheelPower = powerLevel;
-
-															// Light up the spin button by changing it's source image and adding a clickable class to it.
-															document.getElementById('spin_button').src = "images/spin_on.png";
-															document.getElementById('spin_button').className = "clickable";
-														}
-													}
-
-													// -------------------------------------------------------
-													// Click handler for spin button.
-													// -------------------------------------------------------
-													function startSpin() {
-														// Ensure that spinning can't be clicked again while already running.
-														if (wheelSpinning == false) {
-															// Based on the power level selected adjust the number of spins for the wheel, the more times is has
-															// to rotate with the duration of the animation the quicker the wheel spins.
-															if (wheelPower == 1) {
-																theWheel.animation.spins = 3;
-															} else if (wheelPower == 2) {
-																theWheel.animation.spins = 8;
-															} else if (wheelPower == 3) {
-																theWheel.animation.spins = 15;
-															}
-
-															// Disable the spin button so can't click again while wheel is spinning.
-															document.getElementById('spin_button').src = "images/button1.jpg";
-															document.getElementById('spin_button').className = "";
-
-															// Begin the spin animation by calling startAnimation on the wheel object.
-															theWheel.startAnimation();
-
-															// Set to true so that power can't be changed and spin button re-enabled during
-															// the current animation. The user will have to reset before spinning again.
-															wheelSpinning = true;
-														}
-													}
-
-													// -------------------------------------------------------
-													// Function for reset button.
-													// -------------------------------------------------------
-													function resetWheel() {
-														theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
-														theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
-														theWheel.draw();                // Call draw to render changes to the wheel.
-
-														document.getElementById('pw1').className = "";  // Remove all colours from the power level indicators.
-														document.getElementById('pw2').className = "";
-														document.getElementById('pw3').className = "";
-
-														wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
-													}
 												</script>
+
+
 											</div>
 										</div>
 									</div>
@@ -395,42 +227,21 @@ https://templatemo.com/tm-528-elegance
 				<div class="section-inner">
 					<div class="row justify-content-center">
 						<div class="col-md-7 wide-col-laptop">
-							<div class="title-block animate" data-animate="fadeInUp">
-								<span>MAPS</span>
-								<h2> i’m good?</h2>
-							</div>
-							<div class="skills-row animate" data-animate="fadeInDown">
-								<div class="row">
-									<div class="col-md-8 offset-md-2">
-										<div class="skill-item">
-											<h6>HTML CSS</h6>
-											<div class="skill-bar">
-												<span>70%</span>
-												<div class="filled-bar"></div>
-											</div>
-										</div>
-										<div class="skill-item">
-											<h6>PSD Design</h6>
-											<div class="skill-bar">
-												<span>90%</span>
-												<div class="filled-bar-2"></div>
-											</div>
-										</div>
-										<div class="skill-item">
-											<h6>Social Media</h6>
-											<div class="skill-bar">
-												<span>70%</span>
-												<div class="filled-bar"></div>
-											</div>
-										</div>
-										<div class="skill-item last-skill">
-											<h6>Leadership</h6>
-											<div class="skill-bar">
-												<span>90%</span>
-												<div class="filled-bar-2"></div>
-											</div>
+							<div class="map_wrap">
+								<div id="map"></div>
+								<div id="menu_wrap" class="bg_white">
+									<div class="option">
+										<div>
+											키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">
+											<button type="submit">검색하기</button>
 										</div>
 									</div>
+									<hr>
+									<ul id="placesList"></ul>
+								</div>
+
+								<div>
+									<a href="#"><button id="myPosition" class="position_control">P</button></a>
 								</div>
 							</div>
 						</div>
@@ -675,24 +486,205 @@ https://templatemo.com/tm-528-elegance
 		</div>
 	</div>
 
+	<script type="text/javascript" src="js/kakaoMap_geolocation.js"></script>
+	<script type="text/javascript" src="js/kakaoMap_request.js"></script>
+
+	<script>
+
+		function delete1() {
+			$('html, body').animate({
+				scrollTop: target.offset().top - top_space
+			}, 1500, 'easeInOutExpo');
+		};
+
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+			mapOption = {
+				center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+				// center: new kakao.maps.LatLng(35.233446, 127.650310), // 지도의 중심좌표
+				level: 3 // 지도의 확대 레벨
+			};
+
+		// 지도를 생성합니다 
+		map = new kakao.maps.Map(mapContainer, mapOption);
+		// 장소 검색 객체를 생성합니다
+		ps = new kakao.maps.services.Places();
+		// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+		infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
+		userPosition = {};
+		markers = [];
+
+		var numSegments = 0;
+		var FoodList = new Array();
+		var flag = 0;
+		var theWheel;
+
+		$('.go_to_roullet').click(function () {
+
+			// Create new wheel object specifying the parameters at creation time.
+			theWheel = new Winwheel({
+				'numSegments': numSegments,     // Specify number of segments.
+				'outerRadius': 212,   // Set outer radius so wheel fits inside the background.
+				'textFontSize': 28,    // Set font size as desired.
+				'segments': FoodList       // Define segments including colour and text.
+				,
+				'animation':           // Specify the animation to use.
+				{
+					'type': 'spinToStop',
+					'duration': 15,
+					'spins': 8,
+					'callbackFinished': alertPrize,
+					'callbackSound': playSound,   // Function to call when the tick sound is to be triggered.
+					'soundTrigger': 'pin'        // Specify pins are to trigger the sound, the other option is 'segment'.
+				},
+				'pins':
+				{
+					'number': 16   // Number of pins. They space evenly around the wheel.
+				}
+			});
+
+			location.href = "#slide03";
+
+		});
+
+		$("#spin_button").click(function () {
+			startSpin();
+		});
+		$("#resetWheel").click(function () {
+			resetWheel();
+		});
+
+		//startSpin();
+		$('.p_add').click(function () {
+			numSegments++;
+			//	theWheel.segments.push({'fillStyle' : '#EAEAEA', 'text' : '된장찌개'});
+
+			FoodList.push({ 'fillStyle': '#EAEAEA', 'text': '된장찌개' });
+		});
+
+		// -----------------------------------------------------------------
+		// This function is called when the segment under the prize pointer changes
+		// we can play a small tick sound here like you would expect on real prizewheels.
+		// -----------------------------------------------------------------
+		let audio = new Audio('tick.mp3');  // Create audio object and load tick.mp3 file.
+
+		function playSound() {
+			// Stop and rewind the sound if it already happens to be playing.
+			audio.pause();
+			audio.currentTime = 0;
+
+			// Play the sound.
+			audio.play();
+		}
+
+		// -------------------------------------------------------
+		// Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters
+		// note the indicated segment is passed in as a parmeter as 99% of the time you will want to know this to inform the user of their prize.
+		// -------------------------------------------------------
+		function alertPrize(indicatedSegment) {
+			// Do basic alert of the segment text.
+			// You would probably want to do something more interesting with this information.
+
+			location.href = "#slide04";
+			searchPlaces(indicatedSegment.text);
+		}
+		
+		// =======================================================================================================================
+		// Code below for the power controls etc which is entirely optional. You can spin the wheel simply by
+		// calling theWheel.startAnimation();
+		// =======================================================================================================================
+		let wheelPower = 0;
+		let wheelSpinning = false;
+
+		// -------------------------------------------------------
+		// Function to handle the onClick on the power buttons.
+		// -------------------------------------------------------
+		function powerSelected(powerLevel) {
+			// Ensure that power can't be changed while wheel is spinning.
+			if (wheelSpinning == false) {
+				// Reset all to grey incase this is not the first time the user has selected the power.
+				document.getElementById('pw1').className = "";
+				document.getElementById('pw2').className = "";
+				document.getElementById('pw3').className = "";
+
+				// Now light up all cells below-and-including the one selected by changing the class.
+				if (powerLevel >= 1) {
+					document.getElementById('pw1').className = "pw1";
+				}
+
+				if (powerLevel >= 2) {
+					document.getElementById('pw2').className = "pw2";
+				}
+
+				if (powerLevel >= 3) {
+					document.getElementById('pw3').className = "pw3";
+				}
+
+				// Set wheelPower var used when spin button is clicked.
+				wheelPower = powerLevel;
+
+				// Light up the spin button by changing it's source image and adding a clickable class to it.
+				document.getElementById('spin_button').src = "spin_on.png";
+				document.getElementById('spin_button').className = "clickable";
+			}
+		}
+
+		// -------------------------------------------------------
+		// Click handler for spin button.
+		// -------------------------------------------------------
+		function startSpin() {
+			// Ensure that spinning can't be clicked again while already running.
+			if (wheelSpinning == false) {
+				// Based on the power level selected adjust the number of spins for the wheel, the more times is has
+				// to rotate with the duration of the animation the quicker the wheel spins.
+				if (wheelPower == 1) {
+					theWheel.animation.spins = 3;
+				} else if (wheelPower == 2) {
+					theWheel.animation.spins = 8;
+				} else if (wheelPower == 3) {
+					theWheel.animation.spins = 15;
+				}
+
+				// Disable the spin button so can't click again while wheel is spinning.
+				document.getElementById('spin_button').src = "spin_off.png";
+				document.getElementById('spin_button').className = "";
+
+				// Begin the spin animation by calling startAnimation on the wheel object.
+				theWheel.startAnimation();
+
+				// Set to true so that power can't be changed and spin button re-enabled during
+				// the current animation. The user will have to reset before spinning again.
+				wheelSpinning = true;
+			}
+		}
+
+		// -------------------------------------------------------
+		// Function for reset button.
+		// -------------------------------------------------------
+		function resetWheel() {
+			theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+			theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+			theWheel.draw();                // Call draw to render changes to the wheel.
+
+			document.getElementById('pw1').className = "";  // Remove all colours from the power level indicators.
+			document.getElementById('pw2').className = "";
+			document.getElementById('pw3').className = "";
+
+			wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+		}
+
+		// Create new wheel object specifying the parameters at creation time.
+	</script>
+
 	<script src="js/jquery.js"></script>
-
 	<script src="js/bootstrap.min.js"></script>
-
 	<script src="js/fullpage.min.js"></script>
-
 	<script src="js/scrolloverflow.js"></script>
-
 	<script src="js/owl.carousel.min.js"></script>
-
 	<script src="js/jquery.inview.min.js"></script>
-
 	<script src="js/form.js"></script>
-
 	<script src="js/custom.js"></script>
-
 	<script src="js/Winwheel.js"></script>
-
 </body>
 
 </html>
