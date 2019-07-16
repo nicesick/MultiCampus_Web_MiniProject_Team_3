@@ -17,20 +17,32 @@ public class UserController {
 	@Qualifier("UserBiz")
 	ObjectBiz<String, User> biz;
 	
-	@RequestMapping("login.mc")
-	public ModelAndView login(ModelAndView mv, String id, String pwd, HttpSession session) {
-		User user = biz.select(id);
+	@RequestMapping("/login.mc")
+	public ModelAndView login(ModelAndView mv) {
+//		ModelAndView mv = new ModelAndView();
+		System.out.println("login");
+		mv.addObject("center", "login");
 		mv.setViewName("index");
-		
-		if (user != null && pwd != null && !pwd.equals("") && user.getPwd().equals(pwd)) {
-			session.setAttribute("loginInfo", user);
-			session.setMaxInactiveInterval(1000);
-		}
-		
 		return mv;
 	}
 	
-	@RequestMapping("logout.mc")
+	@RequestMapping("/loginimpl.mc")
+	public ModelAndView loginimpl(ModelAndView mv, String login_id, String pwd, HttpSession session) {
+		mv.setViewName("index");
+		User user = biz.select(login_id);
+//		
+//		if (user != null && pwd != null && !pwd.equals("") && user.getPwd().equals(pwd)) {
+//			session.setAttribute("loginInfo", user);
+//			session.setMaxInactiveInterval(1000);
+//		}
+		
+//		User user = new User(login_id, pwd, "ming", 1, "one");
+		session.setAttribute("loginInfo", user);
+		session.setMaxInactiveInterval(1000);
+		return mv;
+	}
+	
+	@RequestMapping("/logout.mc")
 	public ModelAndView logout(ModelAndView mv, HttpSession session) {
 		mv.setViewName("index");
 		
@@ -41,19 +53,29 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping("register.mc")
-	public ModelAndView register(ModelAndView mv) {
+	@RequestMapping("/join.mc")
+	public ModelAndView join(ModelAndView mv) {
+		System.out.println("join");
+		mv.addObject("center", "join");
 		mv.setViewName("index");
-		mv.addObject("center", "register");
 		
 		return mv;
 	}
 	
-	@RequestMapping("registerimpl.mc")
-	public ModelAndView registerImpl(ModelAndView mv, User user) {
+	@RequestMapping("/joinimpl.mc")
+	public ModelAndView joinImpl(ModelAndView mv, User user) {
+		System.out.println("joinimpl");
 		mv.setViewName("index");
 		biz.insert(user);
-		
+		System.out.println(user);
+		return mv;
+	}
+	@RequestMapping("/updateimpl.mc")
+	public ModelAndView updateImpl(ModelAndView mv, User user) {
+		System.out.println("updateimpl");
+		mv.setViewName("index");
+		biz.update(user);
+		System.out.println(user);
 		return mv;
 	}
 }

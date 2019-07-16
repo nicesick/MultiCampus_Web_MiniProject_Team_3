@@ -1,70 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<link
-	href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900"
-	rel="stylesheet">
-<!-- Additional CSS Files -->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-<link rel="stylesheet" type="text/css" href="css/fullpage.min.css">
-<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/templatemo-style.css">
-<link rel="stylesheet" href="css/responsive.css">
-
-<div class="col-md-6 animate" data-animate="fadeInUp">
-	<form id="ajax-contact" method="post" action="#">
-		<div class="input-field">
-			
-			아이디 <input type="text" class="form-control" name="id" id="id"
-				required placeholder="아이디"> <button>중복확인</button>
+<!-- <script>
+$('#btn_join').on('click', function() {
+    
+  });
+</script> -->
+<form method="post" action="joinimpl.mc">
+<div class="section-inner">
+	<div class="row justify-content-center">
+		<div class="col-md-7 wide-col-laptop">
+			<div class="title-block animate" data-animate="fadeInUp">
+				<span>회원가입 페이지</span>
+			</div>
+			<div class="contact-section">
+				<div class="row">
+					<!-- <form id="ajax-contact" method="post" action="#"> -->
+					<div class="col-md-6 animate" data-animate="fadeInUp">
+						<div class="input-field">
+							<input type="text" class="form-control" name="id" id="user_id"
+								required placeholder="아이디">
+						</div>
+						<div class="input-field">
+							<input readonly="readonly" type="text" class="form-control" name="id_check" id="id_check"
+								required placeholder="아이디 중복확인">
+						</div>
+						<!-- <button class="btn" type="submit" id="id_check" style="margin-bottom:30px;">중복확인</button> -->
+						<div class="input-field">
+							<input type="password" class="form-control" name="pwd" id="user_pwd"
+								required placeholder="비밀번호">
+						</div>
+						<div class="input-field">
+							<input type="password" class="form-control" name="user_pwd_check"
+								id="user_pwd_check" required placeholder="비밀번호 확인">
+						</div>
+					</div>
+					<div class="col-md-6 animate" data-animate="fadeInUp">
+						<div class="input-field">
+							<input type="text" class="form-control" name="name" id="user_name"
+								required placeholder="이름">
+						</div>
+						<div class="input-field">
+							<input type="text" class="form-control" name="hint" id="hint"
+								required placeholder="힌트">
+						</div>
+						<div class="input-field">
+							<input type="text" class="form-control" name="hint_answer"
+								id="hint_ans" required placeholder="힌트 답변">
+						</div>
+						<button class="btn" id="btn_join" type="submit">회원가입</button>
+					</div>
+					<!-- </form> -->
+					<div id="form-messages" class="mt-3"></div>
+				</div>
+			</div>
 		</div>
-		<!-- <input type="text" class="form-control" name="name" id="name"
-				required placeholder="Name"> -->
-		<div class="input-field">
-			비밀번호 <input type="password" class="form-control" name="pwd" id="pwd"
-				required placeholder="비밀번호">
-		</div>		
-		<div class="input-field">
-			비밀번호 확인 <input type="password" class="form-control" name="pwd" id="pwd"
-				required placeholder="비밀번호 확인">
-		</div>		
-		<div class="input-field">
-			이름 <input type="text" class="form-control" name="name" id="name"
-				required placeholder="이름">
-		</div>		
-		<div class="input-field">
-			힌트 <input type="text" class="form-control" name="hint" id="hint"
-				required placeholder="힌트">
-		</div>		
-		<div class="input-field">
-			힌트 답변<input type="text" class="form-control" name="hint_ans" id="hint_ans"
-				required placeholder="힌트 답변">
-		</div>		
-		
-<!-- 			<input type="email" class="form-control" name="password" id="email"
-				required placeholder="Email"> -->
-		
-<!-- 		<div class="input-field">
-			<textarea class="form-control" name="message" id="message" required
-				placeholder="Message"></textarea>
-		</div> -->
-		<button class="btn" type="submit">JOIN</button> <!-- form.js 에서 아이디, 비번 확인해서 메세지 던지기. -->
-	</form>
-	<div id="form-messages" class="mt-3"></div>
+	</div>
 </div>
-
-<!-- <div class="center_page">
-<h1>Login Page</h1><br>
-<form action="loginimpl.mc" method="POST">
-<input class="in_" type="text" name="id" placeholder=" 아이디" width="20"><br><br>
-<input class="in_" type="password" name="pwd" placeholder=" 비밀번호" width="20"><br><br>
-<input type="submit" value="LOGIN" width="20px"><br>
 </form>
-</div> -->

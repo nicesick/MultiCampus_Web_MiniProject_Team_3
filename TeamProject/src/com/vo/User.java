@@ -4,7 +4,7 @@ public class User {
 	String id;
 	String pwd;
 	String name;
-	int hint;
+	String hint;
 	String hint_answer;
 	
 	public User() {
@@ -13,7 +13,7 @@ public class User {
 
 	
 
-	public User(String pwd, String name, int hint, String hint_answer) {
+	public User(String pwd, String name, String hint, String hint_answer) {
 		super();
 		this.pwd = pwd;
 		this.name = name;
@@ -23,7 +23,7 @@ public class User {
 
 
 
-	public User(String id, String pwd, String name, int hint, String hint_answer) {
+	public User(String id, String pwd, String name, String hint, String hint_answer) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -64,18 +64,18 @@ public class User {
 		this.name = name;
 	}
 
-	public int getHint() {
+	public String getHint() {
 		return hint;
 	}
 
-	public void setHint(int hint) {
+	public void setHint(String hint) {
 		this.hint = hint;
 	}
 
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", pwd=" + pwd + ", name=" + name + ", hint=" + hint + ", hint_id=" + hint_answer + "]";
+		return "User [id=" + id + ", pwd=" + pwd + ", name=" + name + ", hint=" + hint + ", hint_answer=" + hint_answer + "]";
 	}
 		
 	
