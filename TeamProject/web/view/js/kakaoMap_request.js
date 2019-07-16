@@ -1,24 +1,39 @@
 (function ($) {
 	"use strict";
 
+	var ps = new kakao.maps.services.Places();
+
+	// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+	var infowindow;
+	var markers = [];
+
+	var keyword = '된장찌개';
+
 	$('button[type="submit"]').click(searchPlaces);
 
-	$('#myPosition').click(function(){
-		var position = new kakao.maps.LatLng(userPosition[0],userPosition[1]);
+	$('#myPosition').click(function () {
+		var position = new kakao.maps.LatLng(userPosition[0], userPosition[1]);
 		map.setCenter(position);
 	});
 
-	// 키워드 검색을 요청하는 함수입니다
-	function searchPlaces(inputKeyword) {
-		var keyword = document.getElementById('keyword').value;
+	function geoCoderCallback(result, status) {
+		if (status === kakao.maps.services.Status.OK) {
+			console.log(result[0].address.region_1depth_name + ' ' + result[0].address.region_2depth_name + ' ' + keyword);
 
-		if (!inputKeyword.replace(/^\s+|\s+$/g, '')) {
+			ps.keywordSearch(result[0].address.region_1depth_name + ' ' + result[0].address.region_2depth_name + ' ' + keyword, placesSearchCB);
+		}
+	}
+
+	// 키워드 검색을 요청하는 함수입니다
+	function searchPlaces() {
+		if (!keyword.replace(/^\s+|\s+$/g, '')) {
 			alert('키워드를 입력해주세요!');
 			return false;
 		}
 
+		var geocoder = new kakao.maps.services.Geocoder();
+		geocoder.coord2Address(userPosition[1], userPosition[0], geoCoderCallback);
 		// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-		ps.keywordSearch(inputKeyword, placesSearchCB);
 	}
 
 	// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -83,24 +98,17 @@
 			// 마커와 검색결과 항목에 mouseover 했을때
 			// 해당 장소에 인포윈도우에 장소명을 표시합니다
 			// mouseout 했을 때는 인포윈도우를 닫습니다
-			(function (marker, title) {
-				kakao.maps.event.addListener(marker, 'mouseover', function () {
-					displayInfowindow(marker, title);
-				});
 
-				kakao.maps.event.addListener(marker, 'mouseout', function () {
-					infowindow.close();
-				});
-
-				itemEl.onmouseover = function () {
-					displayInfowindow(marker, title);
+			(function (place, placePosition) {
+				itemEl.onclick = function () {
+					if (infowindow != null) {
+						infowindow.setMap(null);
+					}
+					
+					displayInfowindow(place, placePosition);
+					map.setCenter(placePosition);
 				};
-
-				itemEl.onmouseout = function () {
-					infowindow.close();
-				};
-
-			})(marker, places[i].place_name);
+			})(places[i], placePosition);
 
 			fragment.appendChild(itemEl);
 		}
@@ -169,11 +177,18 @@
 
 	// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 	// 인포윈도우에 장소명을 표시합니다
-	function displayInfowindow(marker, title) {
-		var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+	function displayInfowindow(place, placePosition) {
+		var itemStr = '<div class="customoverlay">'
+    	+ '  <a href="' + place.place_url + '" target="_blank">'
+    	+ '    <span class="title">' + place.place_name + '</span>'
+    	+ '  </a>'
+    	+ '</div>';
 
-		infowindow.setContent(content);
-		infowindow.open(map, marker);
+		infowindow = new kakao.maps.CustomOverlay({
+			map : map,
+			position : placePosition,
+			content : itemStr
+		});
 	}
 
 	// 검색결과 목록의 자식 Element를 제거하는 함수입니다

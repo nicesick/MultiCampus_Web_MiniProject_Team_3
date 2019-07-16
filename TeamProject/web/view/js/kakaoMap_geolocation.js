@@ -1,17 +1,21 @@
 (function ($) {
 	"use strict";
-	
+
+	document.write('<script type=\"text/javascript\" src=\"http://jsgetip.appspot.com\"><\/script>');
+
 	getLocation();
 
-	function getLocation() {
-		if (navigator.geolocation) {
-			navigator.geolocation.watchPosition(showPosition, showError);
-		}
+	function ip(){};
 
-		else {
-			$('#map').innerHTML = "Geolocation is not supported by this browser.";
-		}
-	}
+	function getLocation() {
+		$.ajax({
+			url : 'http://ip-api.com/json/' + ip(),
+
+			success : function(result){
+				console.log(result)
+			}
+		})
+	};
 
 	function showPosition(position) {
 		userPosition[0] = position.coords.latitude;
