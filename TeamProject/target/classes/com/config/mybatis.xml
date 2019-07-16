@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<mapper resource="com/config/boardMapper.xml"/>
 		<mapper resource="com/config/categoryMapper.xml"/>
 		<mapper resource="com/config/foodMapper.xml"/>
+		<mapper resource="com/config/hintMapper.xml"/>
 		<mapper resource="com/config/ignoreMapper.xml"/>
 		<mapper resource="com/config/preferenceMapper.xml"/>
 		<mapper resource="com/config/userMapper.xml"/>

@@ -21,12 +21,12 @@ public class Main {
 //		StringBiz<String,String> categoryBiz = (StringBiz<String,String>)factory.getBean("CategoryBiz");
 //		System.out.println(categoryBiz.select("1000").toString());
 //		categoryBiz.delete("1001");
-//		ObjectBiz<String,Food> foodBiz = (ObjectBiz<String,Food>)factory.getBean("FoodBiz");
-//		foodBiz.insert(new Food("cake", "", "", "", 1000));
+		ObjectBiz<String,Food> foodBiz = (ObjectBiz<String,Food>)factory.getBean("FoodBiz");
+		foodBiz.insert(new Food("nuneTine", "", "", "", 1000));
 //		StringDao<String,String> ignoreDao = (StringDao<String, String>) factory.getBean("PreferenceDao");
 //		ignoreDao.insert("id01", "1000");
-		StringDao<String,String> hintDao = (StringDao<String, String>) factory.getBean("HintDao");
-		System.out.println(hintDao.select("1000").toString());
+//		StringDao<String,String> hintDao = (StringDao<String, String>) factory.getBean("HintDao");
+//		System.out.println(hintDao.select("1000").toString());
 		
 	}
 

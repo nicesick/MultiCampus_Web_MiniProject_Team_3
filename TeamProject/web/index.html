@@ -134,9 +134,12 @@ https://templatemo.com/tm-528-elegance
 													<img src="images/img01.jpg" alt="">
 												</div>
 												<div class="thumb-inner animate">
-													<h4>templatemo is the best</h4>
-													<p>Please tell your friends about it. Templatemo is the best website
-														to download free Bootstrap CSS templates.</p>
+													<table id="menu_add_table">
+														<tbody>
+
+														</tbody>
+
+													</table>
 												</div>
 											</div>
 										</div>
@@ -518,7 +521,7 @@ https://templatemo.com/tm-528-elegance
 		var FoodList = new Array();
 		var flag = 0;
 		var theWheel;
-
+		
 		$('.go_to_roullet').click(function () {
 
 			// Create new wheel object specifying the parameters at creation time.
@@ -553,13 +556,57 @@ https://templatemo.com/tm-528-elegance
 		$("#resetWheel").click(function () {
 			resetWheel();
 		});
-
+		function makeRow(id,name,index){
+			var rowSentence = "<tr id="+index+"><td>"+id+"</td><td>"+name+"</td></tr>";
+			$('#menu_add_table > tbody').append(rowSentence);
+			var tagOrder = "#"+index;
+			$(document).on("click",tagOrder,function(event){
+				alert(id);
+				FoodList.push({ 'fillStyle': '#EAEAEA', 'text': name });
+				// $.ajax({
+				// 	url:"./updateDBWeb.php",
+				// 	type:"POST",
+				// 	data: {
+				// 		"id": id, "name" :name
+				// 	},
+				// 	success : function(data){
+				// 		alert("success");
+						
+				// 	},
+				// 	error:function(){
+						
+				// 		alert("fail");
+				// 	}
+				// });
+			});
+			}
 		//startSpin();
 		$('.p_add').click(function () {
 			numSegments++;
 			//	theWheel.segments.push({'fillStyle' : '#EAEAEA', 'text' : '된장찌개'});
+			var foodlist;
+			$( '#menu_add_table > tbody').empty();
+			$.ajax({
+				url:"menu_add_table_add_list.mc",
+				method:"POST",
+				success:function(data){
+					var index =0;
+					foodlist = JSON.parse(data);
+					// $.extend(true,{},JSON.parse(data));
+					$.each(foodlist,function(){
+						makeRow(this.id,this.name,index);
+						index = index+1;
+					})
 
-			FoodList.push({ 'fillStyle': '#EAEAEA', 'text': '된장찌개' });
+					
+				}
+
+			});
+			
+			$('.portfolio-item .thumb-inner').css('visibility', 'visible');
+			
+
+			
 		});
 
 		// -----------------------------------------------------------------
