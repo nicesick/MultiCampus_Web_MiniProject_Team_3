@@ -1,4 +1,4 @@
-Ôªø<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -7,8 +7,8 @@
 <html lang="en">
 
 <head>
-<title>HTML5 Canvas Winning Wheel</title>
-<!-- <link rel="stylesheet" href="view/main.css" type="text/css" /> -->
+<title>∏ﬁ¥∫ √ﬂ√µ Ω√Ω∫≈€! ø¿¥√ ππ eat¡ˆ?</title>
+<link rel="stylesheet" href="view/main.css" type="text/css" />
 <link rel="stylesheet" href="view/css/kakaoMap.css">
 
 <script type="text/javascript"
@@ -27,7 +27,7 @@
 	href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900"
 	rel="stylesheet">
 
-<title>Î©îÎâ¥ Ï∂îÏ≤ú ÏãúÏä§ÌÖú, Ïò§Îäò Î≠ê EATÏßÄ?</title>
+<title>∏ﬁ¥∫ √ﬂ√µ Ω√Ω∫≈€, ø¿¥√ ππ EAT¡ˆ?</title>
 <!--
 Elegance Template
 https://templatemo.com/tm-528-elegance
@@ -40,6 +40,29 @@ https://templatemo.com/tm-528-elegance
 <link rel="stylesheet" href="view/css/animate.css">
 <link rel="stylesheet" href="view/css/templatemo-style.css">
 <link rel="stylesheet" href="view/css/responsive.css">
+
+
+<style>
+#wheel_back {
+	font-size: 70px;
+}
+
+@media ( max-width : 800px ) {
+	.the_wheel, .the_wheel thead, .the_wheel tbody, .the_wheel tr,
+		.the_wheel th, .the_wheel td {
+		display: block;
+	}
+	.the_wheel tr {
+		border-bottom: 1px solid #ddd;
+	}
+	.the_wheel th, .the_wheel td {
+		border-top: none;
+		border-bottom: none;
+	}
+}
+</style>
+
+
 </head>
 
 <body>
@@ -54,7 +77,7 @@ https://templatemo.com/tm-528-elegance
 			<div class="container-fluid">
 				<div class="navbar">
 					<br> <a href="#slide01" id="logo"
-						title="Elegance by TemplateMo"> <br>Ïò§Îäò Î≠ê eatÏßÄ?
+						title="Elegance by TemplateMo"> <br>ø¿¥√ ππ eat¡ˆ?
 					</a>
 					<div class="navigation-row">
 						<nav id="navigation">
@@ -70,17 +93,7 @@ https://templatemo.com/tm-528-elegance
 									<li data-menuanchor="slide04"><a href="#slide04">Maps</a></li>
 									<li data-menuanchor="slide05"><a href="#slide05">About
 											us</a></li>
-									<c:choose>
-										<c:when test="${loginInfo == null }">
-											<li data-menuanchor="slide06"><a href="#slide06">Login</a></li>
-											<li data-menuanchor="slide07"><a href="#slide07">Join</a></li>
-										</c:when>
-										<c:otherwise>
-											<li data-menuanchor="slide06"><a href="logout.mc">Logout</a></li>
-											<li data-menuanchor="slide07"><a href="#slide07">MyPage</a></li>
-										</c:otherwise>
-									</c:choose>
-
+									<li data-menuanchor="slide06"><a href="#slide06">Testimonials</a></li>
 								</ul>
 							</div>
 						</nav>
@@ -97,38 +110,15 @@ https://templatemo.com/tm-528-elegance
 			<div class="section animated-row" data-section="slide01">
 				<div class="section-inner">
 					<div class="welcome-box">
-						<span class="welcome-first animate" data-animate="fadeInUp">ÏãùÏÇ¨
-							ÏãúÍ∞ÑÎßå ÎêòÎ©¥ Í≥†ÎØºÌïòÏÖ®Ï£†?</span>
-						<h1 class="welcome-title animate" data-animate="fadeInUp">‚ÄòÏò§Îäò
-							Î≠ê Î®πÏßÄ?‚Äô</h1>
-						<p class="animate" data-animate="fadeInUp">Ïù¥Ï†ú, Ï†ÄÌù¨Í∞Ä Í≤∞Ï†ïÌï¥ÎìúÎ¶ΩÎãàÎã§.</p>
+						<span class="welcome-first animate" data-animate="fadeInUp">ΩƒªÁ
+							Ω√∞£∏∏ µ«∏È ∞ÌπŒ«œºÃ¡“?</span>
+						<h1 class="welcome-title animate" data-animate="fadeInUp">°Æø¿¥√
+							ππ ∏‘¡ˆ?°Ø</h1>
+						<p class="animate" data-animate="fadeInUp">¿Ã¡¶, ¿˙»Ò∞° ∞·¡§«ÿµÂ∏≥¥œ¥Ÿ.</p>
 						<div class="next-section span" data-animate="fadeInUp">
-							
-							
-							<c:choose>
-								<c:when test="${loginInfo == null}">
-									<a href="#slide06">Login</a>
-									<a href="#slide07">Join</a>
-								</c:when>
-								<c:otherwise>
-									<a href="logout.mc">Logout</a>
-									<a href="#slide07">MyPage</a>
-								</c:otherwise>
-							</c:choose>
-							<%-- 							<c:choose>
-								<c:when test="${center eq 'login'}">
-									<a href="#slide06">Login</a>
-									<a href="join.mc">Join</a>
-								</c:when>
-								<c:when test="${center eq null}">
-									<a href="#slide06">Login</a>
-									<a href="join.mc">Join</a>
-								</c:when>
-								<c:otherwise>
-									<a href="login.mc">Login</a>
-									<a href="#slide06">Join</a>
-								</c:otherwise>
-							</c:choose> --%>
+
+							<a href="login.mc#slide06">Login</a> <a href="join.mc#slide06">Join</a>
+
 						</div>
 					</div>
 				</div>
@@ -157,20 +147,20 @@ https://templatemo.com/tm-528-elegance
 													data-animate="fadeInUp">
 													<div class="counter-box">
 														<i class="fa fa-desktop counter-icon" aria-hidden="true"></i><span
-															class="count-number">Î£∞Î†õ ÎèåÎ¶¨Í∏∞</span>
+															class="count-number">∑Í∑ø µπ∏Æ±‚</span>
 													</div>
 												</div>
 
 												<div class="item animate p_add" data-animate="fadeInUp">
 													<div class="counter-box">
 														<i class="fa fa-desktop counter-icon" aria-hidden="true"></i><span
-															class="count-number">Ï∂îÍ∞Ä</span>
+															class="count-number">√ﬂ∞°</span>
 													</div>
 												</div>
 												<div class="item animate p_delete" data-animate="fadeInUp">
 													<div class="counter-box">
 														<i class="fa fa-desktop counter-icon" aria-hidden="true"></i><span
-															class="count-number">ÏÇ≠Ï†ú</span>
+															class="count-number">ªË¡¶</span>
 													</div>
 												</div>
 											</div>
@@ -212,11 +202,8 @@ https://templatemo.com/tm-528-elegance
 											<div class="animate" data-animate="fadeInUp">
 
 												<div align="center">
-													<h1>Î£∞Î†õ</h1>
-													<h2>&nbsp;‚ñº</h2>
-
-
-													<table cellpadding="0" cellspacing="0" border="0">
+													<table cellpadding="20" cellspacing="0" border="0" display:
+														table-cell>
 														<tr>
 															<td>
 																<div class="power_controls">
@@ -227,37 +214,42 @@ https://templatemo.com/tm-528-elegance
 																		</tr>
 																		<tr>
 																			<td width="78" align="center" id="pw3"
-																				onClick="powerSelected(3);">High</td>
+																				onClick="powerSelected(3);">ºº∞‘</td>
 																		</tr>
 																		<tr>
 																			<td align="center" id="pw2"
-																				onClick="powerSelected(2);">Med</td>
+																				onClick="powerSelected(2);">¿˚¥Á»˜</td>
 																		</tr>
 																		<tr>
 																			<td align="center" id="pw1"
-																				onClick="powerSelected(1);">Low</td>
+																				onClick="powerSelected(1);">æ‡«œ∞‘</td>
 																		</tr>
 																	</table>
 																	<br /> <img id="spin_button"
-																		src="view/images/spin_off.png" alt="Spin" /> <br />
-																	<br /> &nbsp;&nbsp;<a href="#" id="resetWheel"returnfalse;">Play
-																		Again</a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reset)
+																		src="view/images/button1.jpg" alt="Spin" /> <br />
+																	<br /> &nbsp;&nbsp;<a href="#" text-align="center"
+																		id="resetWheel" returnfalse;">&nbsp;Reset</a>
 																</div>
 															</td>
-															<td width="438" height="582" class="the_wheel"
-																align="center" valign="center">
+															<td id="wheel_back" width="438" height="582"
+																class="the_wheel" align="center" valign="center">
+																°Â
 																<canvas id="canvas" width="434" height="434">
 
 																</canvas>
 															</td>
+															<td width="438" height="582" class="the_wheel"
+																valign="center" align="center">
+
+																<canvas align="right" id="myCanvas" width="434"
+																	height="434">
+																</canvas>
+																<h1 id="start_check" style="text-align: center;">&nbsp;∞Àªˆ«œ±‚</h1>
+
+															</td>
 														</tr>
 													</table>
 												</div>
-
-												<script>
-													
-												</script>
-
 
 											</div>
 										</div>
@@ -268,6 +260,8 @@ https://templatemo.com/tm-528-elegance
 					</div>
 				</div>
 			</div>
+
+
 			<div class="section animated-row" data-section="slide04">
 				<div class="section-inner">
 					<div class="row justify-content-center">
@@ -277,9 +271,8 @@ https://templatemo.com/tm-528-elegance
 								<div id="menu_wrap" class="bg_white">
 									<div class="option">
 										<div>
-											ÌÇ§ÏõåÎìú : <input type="text" value="Ïù¥ÌÉúÏõê ÎßõÏßë" id="keyword"
-												size="15">
-											<button type="submit">Í≤ÄÏÉâÌïòÍ∏∞</button>
+											≈∞øˆµÂ: <input type="text" value="¿Ã≈¬ø¯ ∏¿¡˝" id="keyword" size="15">
+											<button type="submit">∞Àªˆ«œ±‚</button>
 										</div>
 									</div>
 									<hr>
@@ -296,13 +289,16 @@ https://templatemo.com/tm-528-elegance
 				</div>
 			</div>
 
+
+
+
 			<div class="section animated-row" data-section="slide05">
 				<div class="section-inner">
 					<div class="row justify-content-center">
 						<div class="col-md-8 wide-col-laptop">
 							<div class="title-block animate" data-animate="fadeInUp">
 								<span>My Work</span>
-								<h2>what i‚Äôve done?</h2>
+								<h2>what i°Øve done?</h2>
 							</div>
 							<div class="gallery-section">
 								<div class="gallery-list owl-carousel">
@@ -415,7 +411,7 @@ https://templatemo.com/tm-528-elegance
 					<div class="row justify-content-center">
 						<div class="col-md-7 wide-col-laptop">
 							<div class="title-block animate" data-animate="fadeInUp">
-								<span>ÌöåÏõêÍ∞ÄÏûÖ ÌéòÏù¥ÏßÄ</span>
+								<span>»∏ø¯∞°¿‘ ∆‰¿Ã¡ˆ</span>
 							</div>
 							<c:choose>
 								<c:when test="${center == null }">
@@ -430,7 +426,7 @@ https://templatemo.com/tm-528-elegance
 				</div>
 			</div> --%>
 
-			<!-- ÌöåÏõêÍ∞ÄÏûÖ ÌéòÏù¥ÏßÄÎ°ú Ïù¥ÎèôÌïòÍ∏∞ -->
+			<!-- »∏ø¯∞°¿‘ ∆‰¿Ã¡ˆ∑Œ ¿Ãµø«œ±‚ -->
 			<%-- <c:choose>
 				<c:when test="${center == null }">
 					<jsp:include page="view/join.jsp"></jsp:include>
@@ -440,13 +436,13 @@ https://templatemo.com/tm-528-elegance
 				</c:otherwise>
 			</c:choose> --%>
 
-			<!-- Î°úÍ∑∏Ïù∏ ÌéòÏù¥ÏßÄÎ°ú Ïù¥ÎèôÌïòÍ∏∞ -->
+			<!-- ∑Œ±◊¿Œ ∆‰¿Ã¡ˆ∑Œ ¿Ãµø«œ±‚ -->
 			<%-- <div class="section animated-row" data-section="slide07">
 				<div class="section-inner">
 					<div class="row justify-content-center">
 						<div class="col-md-7 wide-col-laptop">
 							<div class="title-block animate" data-animate="fadeInUp">
-								<span>Î°úÍ∑∏Ïù∏ ÌéòÏù¥ÏßÄ</span>
+								<span>∑Œ±◊¿Œ ∆‰¿Ã¡ˆ</span>
 							</div>
 							<c:choose>
 								<c:when test="${center == null }">
@@ -463,21 +459,11 @@ https://templatemo.com/tm-528-elegance
 
 			<div class="section animated-row" data-section="slide06">
 				<c:choose>
-					<c:when test="${loginInfo == null }">
+					<c:when test="${center == null }">
 						<jsp:include page="login.jsp"></jsp:include>
 					</c:when>
 					<c:otherwise>
-						<jsp:include page="loginok.jsp"></jsp:include>
-					</c:otherwise>
-				</c:choose>
-			</div>
-			<div class="section animated-row" data-section="slide07">
-				<c:choose>
-					<c:when test="${loginInfo == null }">
-						<jsp:include page="join.jsp"></jsp:include>
-					</c:when>
-					<c:otherwise>
-						<jsp:include page="user_update.jsp"></jsp:include>
+						<jsp:include page="${center }.jsp"></jsp:include>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -498,8 +484,20 @@ https://templatemo.com/tm-528-elegance
 
 	</div>
 
-	<!-- 	<script type="text/javascript" src="view/js/kakaoMap_geolocation.js"></script>
-	<script type="text/javascript" src="view/js/kakaoMap_request.js"></script> -->
+	<script type="text/javascript" src="view/js/kakaoMap_geolocation.js"></script>
+	<script type="text/javascript" src="view/js/kakaoMap_request.js"></script>
+
+
+
+	<script src="view/js/jquery.js"></script>
+	<script src="view/js/bootstrap.min.js"></script>
+	<script src="view/js/fullpage.min.js"></script>
+	<script src="view/js/scrolloverflow.js"></script>
+	<script src="view/js/owl.carousel.min.js"></script>
+	<script src="view/js/jquery.inview.min.js"></script>
+	<script src="view/js/form.js"></script>
+	<script src="view/js/custom.js"></script>
+	<script src="view/js/Winwheel.js"></script>
 
 	<script>
 		function delete1() {
@@ -508,19 +506,19 @@ https://templatemo.com/tm-528-elegance
 			}, 1500, 'easeInOutExpo');
 		};
 
-		var mapContainer = document.getElementById('map'), // ÏßÄÎèÑÎ•º ÌëúÏãúÌï† div
+		var mapContainer = document.getElementById('map'), // ¡ˆµµ∏¶ «•Ω√«“ div
 		mapOption = {
-			center : new kakao.maps.LatLng(37.566826, 126.9786567), // ÏßÄÎèÑÏùò Ï§ëÏã¨Ï¢åÌëú
-			// center: new kakao.maps.LatLng(35.233446, 127.650310), // ÏßÄÎèÑÏùò Ï§ëÏã¨Ï¢åÌëú
+			center : new kakao.maps.LatLng(37.566826, 126.9786567), // ¡ˆµµ¿« ¡ﬂΩ…¡¬«•
+			// center: new kakao.maps.LatLng(35.233446, 127.650310), // ¡ˆµµ¿« ¡ﬂΩ…¡¬«•
 			level : 3
-		// ÏßÄÎèÑÏùò ÌôïÎåÄ Î†àÎ≤®
+		// ¡ˆµµ¿« »Æ¥Î ∑π∫ß
 		};
 
-		// ÏßÄÎèÑÎ•º ÏÉùÏÑ±Ìï©ÎãàÎã§ 
+		// ¡ˆµµ∏¶ ª˝º∫«’¥œ¥Ÿ 
 		map = new kakao.maps.Map(mapContainer, mapOption);
-		// Ïû•ÏÜå Í≤ÄÏÉâ Í∞ùÏ≤¥Î•º ÏÉùÏÑ±Ìï©ÎãàÎã§
+		// ¿Âº“ ∞Àªˆ ∞¥√º∏¶ ª˝º∫«’¥œ¥Ÿ
 		ps = new kakao.maps.services.Places();
-		// Í≤ÄÏÉâ Í≤∞Í≥º Î™©Î°ùÏù¥ÎÇò ÎßàÏª§Î•º ÌÅ¥Î¶≠ÌñàÏùÑ Îïå Ïû•ÏÜåÎ™ÖÏùÑ ÌëúÏ∂úÌï† Ïù∏Ìè¨ÏúàÎèÑÏö∞Î•º ÏÉùÏÑ±Ìï©ÎãàÎã§
+		// ∞Àªˆ ∞·∞˙ ∏Ò∑œ¿Ã≥™ ∏∂ƒø∏¶ ≈¨∏Ø«ﬂ¿ª ∂ß ¿Âº“∏Ì¿ª «•√‚«“ ¿Œ∆˜¿©µµøÏ∏¶ ª˝º∫«’¥œ¥Ÿ
 		infowindow = new kakao.maps.InfoWindow({
 			zIndex : 1
 		});
@@ -533,176 +531,230 @@ https://templatemo.com/tm-528-elegance
 		var flag = 0;
 		var theWheel;
 
-		$('.go_to_roullet').click(function() {
+		var roullet_result;
 
-			// Create new wheel object specifying the parameters at creation time.
-			theWheel = new Winwheel({
-				'numSegments' : numSegments, // Specify number of segments.
-				'outerRadius' : 212, // Set outer radius so wheel fits inside the background.
-				'textFontSize' : 28, // Set font size as desired.
-				'segments' : FoodList // Define segments including colour and text.
-				,
-				'animation' : // Specify the animation to use.
-				{
-					'type' : 'spinToStop',
-					'duration' : 15,
-					'spins' : 8,
-					'callbackFinished' : alertPrize,
-					'callbackSound' : playSound, // Function to call when the tick sound is to be triggered.
-					'soundTrigger' : 'pin' // Specify pins are to trigger the sound, the other option is 'segment'.
-				},
-				'pins' : {
-					'number' : 16
-				// Number of pins. They space evenly around the wheel.
-				}
-			});
+		$(document).ready(function() {
+				$('.go_to_roullet').click(function() {
 
-			location.href = "#slide03";
+								// Create new wheel object specifying the parameters at creation time.
+								theWheel = new Winwheel({
+									'numSegments' : numSegments, // Specify number of segments.
+									'outerRadius' : 212, // Set outer radius so wheel fits inside the background.
+									'textFontSize' : 28, // Set font size as desired.
+									'segments' : FoodList // Define segments including colour and text.
+									,
+									'animation' : // Specify the animation to use.
+									{
+										'type' : 'spinToStop',
+										'duration' : 15,
+										'spins' : 8,
+										'callbackFinished' : alertPrize,
+										'callbackSound' : playSound, // Function to call when the tick sound is to be triggered.
+										'soundTrigger' : 'pin' // Specify pins are to trigger the sound, the other option is 'segment'.
+									},
+									'pins' : {
+										'number' : 16
+									// Number of pins. They space evenly around the wheel.
+									}
+								});
 
-		});
+								location.href = "#slide03";
 
-		$("#spin_button").click(function() {
-			startSpin();
-		});
-		$("#resetWheel").click(function() {
-			resetWheel();
-		});
+								draw();
 
-		//startSpin();
-		$('.p_add').click(function() {
-			numSegments++;
-			//	theWheel.segments.push({'fillStyle' : '#EAEAEA', 'text' : 'ÎêúÏû•Ï∞åÍ∞ú'});
+							});
 
-			FoodList.push({
-				'fillStyle' : '#EAEAEA',
-				'text' : 'ÎêúÏû•Ï∞åÍ∞ú'
-			});
-		});
+							$("#start_check").click(function() {
+								alert(roullet_result.text);
+							});
 
-		// -----------------------------------------------------------------
-		// This function is called when the segment under the prize pointer changes
-		// we can play a small tick sound here like you would expect on real prizewheels.
-		// -----------------------------------------------------------------
-		let audio = new Audio('tick.mp3'); // Create audio object and load tick.mp3 file.
+							$("#spin_button").click(function() {
+								startSpin();
+							});
+							$("#resetWheel").click(function() {
+								
+								/* ∑Í∑ø ¿¸√º ªË¡¶ */
+								/* FoodList.splice(0,FoodList.length);
+								numSegments=0;
+								theWheel = new Winwheel({
+									'numSegments' : numSegments, // Specify number of segments.
+									'outerRadius' : 212, // Set outer radius so wheel fits inside the background.
+									'textFontSize' : 28, // Set font size as desired.
+									'segments' : FoodList // Define segments including colour and text.
+									,
+									'animation' : // Specify the animation to use.
+									{
+										'type' : 'spinToStop',
+										'duration' : 15,
+										'spins' : 8,
+										'callbackFinished' : alertPrize,
+										'callbackSound' : playSound, // Function to call when the tick sound is to be triggered.
+										'soundTrigger' : 'pin' // Specify pins are to trigger the sound, the other option is 'segment'.
+									},
+									'pins' : {
+										'number' : 16
+									// Number of pins. They space evenly around the wheel.
+									}
+								}); */
+								resetWheel();
+							});
 
-		function playSound() {
-			// Stop and rewind the sound if it already happens to be playing.
-			audio.pause();
-			audio.currentTime = 0;
+							//startSpin();
+							$('.p_add').click(function() {
+								numSegments++;
 
-			// Play the sound.
-			audio.play();
+								if (numSegments % 2 == 1) {
+									FoodList.push({
+										'fillStyle' : '#F6F6F6',
+										'text' : 'µ»¿Â¬Ó∞≥'
+									});
+
+								} else {
+									FoodList.push({
+										'fillStyle' : '#EAEAEA',
+										'text' : '±Ëƒ°¬Ó∞≥'
+									});
+
+								}
+
+							});
+
+							// -----------------------------------------------------------------
+							// This function is called when the segment under the prize pointer changes
+							// we can play a small tick sound here like you would expect on real prizewheels.
+							// -----------------------------------------------------------------
+							let audio = new Audio('tick.mp3'); // Create audio object and load tick.mp3 file.
+
+							function playSound() {
+
+								// Stop and rewind the sound if it already happens to be playing.
+								audio.pause();
+								audio.currentTime = 0;
+
+								// Play the sound.
+								audio.play();
+							}
+
+							// -------------------------------------------------------
+							// Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters
+							// note the indicated segment is passed in as a parmeter as 99% of the time you will want to know this to inform the user of their prize.
+							// -------------------------------------------------------
+							function alertPrize(indicatedSegment) {
+								// Do basic alert of the segment text.
+								// You would probably want to do something more interesting with this information.
+								alert("You have won " + indicatedSegment.text);
+
+								roullet_result = indicatedSegment;
+							}
+
+							// =======================================================================================================================
+							// Code below for the power controls etc which is entirely optional. You can spin the wheel simply by
+							// calling theWheel.startAnimation();
+							// =======================================================================================================================
+							let wheelPower = 0;
+							let wheelSpinning = false;
+
+							// -------------------------------------------------------
+							// Function to handle the onClick on the power buttons.
+							// -------------------------------------------------------
+							function powerSelected(powerLevel) {
+								// Ensure that power can't be changed while wheel is spinning.
+								if (wheelSpinning == false) {
+									// Reset all to grey incase this is not the first time the user has selected the power.
+									document.getElementById('pw1').className = "";
+									document.getElementById('pw2').className = "";
+									document.getElementById('pw3').className = "";
+
+									// Now light up all cells below-and-including the one selected by changing the class.
+									if (powerLevel >= 1) {
+										document.getElementById('pw1').className = "pw1";
+									}
+
+									if (powerLevel >= 2) {
+										document.getElementById('pw2').className = "pw2";
+									}
+
+									if (powerLevel >= 3) {
+										document.getElementById('pw3').className = "pw3";
+									}
+
+									// Set wheelPower var used when spin button is clicked.
+									wheelPower = powerLevel;
+
+									// Light up the spin button by changing it's source image and adding a clickable class to it.
+									document.getElementById('spin_button').src = "view/images/button1.jpg";
+									document.getElementById('spin_button').className = "clickable";
+								}
+							}
+
+							// -------------------------------------------------------
+							// Click handler for spin button.
+							// -------------------------------------------------------
+							function startSpin() {
+								// Ensure that spinning can't be clicked again while already running.
+								if (wheelSpinning == false) {
+									// Based on the power level selected adjust the number of spins for the wheel, the more times is has
+									// to rotate with the duration of the animation the quicker the wheel spins.
+									if (wheelPower == 1) {
+										theWheel.animation.spins = 3;
+									} else if (wheelPower == 2) {
+										theWheel.animation.spins = 8;
+									} else if (wheelPower == 3) {
+										theWheel.animation.spins = 15;
+									}
+
+									// Disable the spin button so can't click again while wheel is spinning.
+									document.getElementById('spin_button').src = "view/images/button1.jpg";
+									document.getElementById('spin_button').className = "";
+
+									// Begin the spin animation by calling startAnimation on the wheel object.
+									theWheel.startAnimation();
+
+									// Set to true so that power can't be changed and spin button re-enabled during
+									// the current animation. The user will have to reset before spinning again.
+									wheelSpinning = true;
+								}
+							}
+
+							// -------------------------------------------------------
+							// Function for reset button.
+							// -------------------------------------------------------
+							function resetWheel() {
+								theWheel.stopAnimation(false); // Stop the animation, false as param so does not call callback function.
+								theWheel.rotationAngle = 0; // Re-set the wheel angle to 0 degrees.
+								theWheel.draw(); // Call draw to render changes to the wheel.
+
+								document.getElementById('pw1').className = ""; // Remove all colours from the power level indicators.
+								document.getElementById('pw2').className = "";
+								document.getElementById('pw3').className = "";
+
+								wheelSpinning = false; // Reset to false to power buttons and spin can be clicked again.
+							}
+
+						});
+
+		function draw() {
+
+			//¿ÃπÃ¡ˆ ∞¥√º ª˝º∫
+			var imgClo = new Image();
+
+			//∆‰¿Ã¡ˆ ∑ŒµÂ»ƒ ¿ÃπÃ¡ˆ∞° ∑ŒµÂ µ«æ˙¿ª ∂ß ¿ÃπÃ¡ˆ √‚∑¬
+			imgClo.addEventListener('load', function() {
+				//∑ŒµÂµ» ¿ÃπÃ¡ˆ∏¶ ƒµπˆΩ∫ø° √‚∑¬
+				var ctx = document.getElementById('myCanvas').getContext("2d");
+
+				//canvas.drawImage() «‘ºˆ∏¶ ªÁøÎ«œø© ¿ÃπÃ¡ˆ √‚∑¬
+				//drawImage ( image sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+				ctx.drawImage(imgClo, 20, 30, 400, 400);
+
+			}, false);
+
+			//¿ÃπÃ¡ˆ ∞Ê∑Œ º≥¡§
+			imgClo.src = "view/images/img01.jpg";
+
 		}
-
-		// -------------------------------------------------------
-		// Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters
-		// note the indicated segment is passed in as a parmeter as 99% of the time you will want to know this to inform the user of their prize.
-		// -------------------------------------------------------
-		function alertPrize(indicatedSegment) {
-			// Do basic alert of the segment text.
-			// You would probably want to do something more interesting with this information.
-
-			location.href = "#slide04";
-			searchPlaces(indicatedSegment.text);
-		}
-
-		// =======================================================================================================================
-		// Code below for the power controls etc which is entirely optional. You can spin the wheel simply by
-		// calling theWheel.startAnimation();
-		// =======================================================================================================================
-		let wheelPower = 0;
-		let wheelSpinning = false;
-
-		// -------------------------------------------------------
-		// Function to handle the onClick on the power buttons.
-		// -------------------------------------------------------
-		function powerSelected(powerLevel) {
-			// Ensure that power can't be changed while wheel is spinning.
-			if (wheelSpinning == false) {
-				// Reset all to grey incase this is not the first time the user has selected the power.
-				document.getElementById('pw1').className = "";
-				document.getElementById('pw2').className = "";
-				document.getElementById('pw3').className = "";
-
-				// Now light up all cells below-and-including the one selected by changing the class.
-				if (powerLevel >= 1) {
-					document.getElementById('pw1').className = "pw1";
-				}
-
-				if (powerLevel >= 2) {
-					document.getElementById('pw2').className = "pw2";
-				}
-
-				if (powerLevel >= 3) {
-					document.getElementById('pw3').className = "pw3";
-				}
-
-				// Set wheelPower var used when spin button is clicked.
-				wheelPower = powerLevel;
-
-				// Light up the spin button by changing it's source image and adding a clickable class to it.
-				document.getElementById('spin_button').src = "spin_on.png";
-				document.getElementById('spin_button').className = "clickable";
-			}
-		}
-
-		// -------------------------------------------------------
-		// Click handler for spin button.
-		// -------------------------------------------------------
-		function startSpin() {
-			// Ensure that spinning can't be clicked again while already running.
-			if (wheelSpinning == false) {
-				// Based on the power level selected adjust the number of spins for the wheel, the more times is has
-				// to rotate with the duration of the animation the quicker the wheel spins.
-				if (wheelPower == 1) {
-					theWheel.animation.spins = 3;
-				} else if (wheelPower == 2) {
-					theWheel.animation.spins = 8;
-				} else if (wheelPower == 3) {
-					theWheel.animation.spins = 15;
-				}
-
-				// Disable the spin button so can't click again while wheel is spinning.
-				document.getElementById('spin_button').src = "spin_off.png";
-				document.getElementById('spin_button').className = "";
-
-				// Begin the spin animation by calling startAnimation on the wheel object.
-				theWheel.startAnimation();
-
-				// Set to true so that power can't be changed and spin button re-enabled during
-				// the current animation. The user will have to reset before spinning again.
-				wheelSpinning = true;
-			}
-		}
-
-		// -------------------------------------------------------
-		// Function for reset button.
-		// -------------------------------------------------------
-		function resetWheel() {
-			theWheel.stopAnimation(false); // Stop the animation, false as param so does not call callback function.
-			theWheel.rotationAngle = 0; // Re-set the wheel angle to 0 degrees.
-			theWheel.draw(); // Call draw to render changes to the wheel.
-
-			document.getElementById('pw1').className = ""; // Remove all colours from the power level indicators.
-			document.getElementById('pw2').className = "";
-			document.getElementById('pw3').className = "";
-
-			wheelSpinning = false; // Reset to false to power buttons and spin can be clicked again.
-		}
-
-		// Create new wheel object specifying the parameters at creation time.
 	</script>
 
-<!-- 	<script src="view/js/btn.js"></script> -->
-	<script src="view/js/jquery.js"></script>
-	<script src="view/js/bootstrap.min.js"></script>
-	<script src="view/js/fullpage.min.js"></script>
-	<script src="view/js/scrolloverflow.js"></script>
-	<script src="view/js/owl.carousel.min.js"></script>
-	<script src="view/js/jquery.inview.min.js"></script>
-	<script src="view/js/form.js"></script>
-	<script src="view/js/custom.js"></script>
-	<script src="view/js/Winwheel.js"></script>
 </body>
 
 </html>
