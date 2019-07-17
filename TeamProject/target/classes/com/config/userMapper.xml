@@ -6,19 +6,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="select" parameterType="String" 
-	resultType="user">
-		SELECT * FROM W_USER WHERE ID=#{obj}
+	resultType="User">
+		SELECT * FROM W_USER WHERE ID=#{id}
 	</select>
 	
 	<select id="selectall" 
-	resultType="user">
+	resultType="User">
 		SELECT * FROM W_USER ORDER BY 1
 	</select>
-	<insert id="insert" parameterType="user">
+	<insert id="insert" parameterType="User">
 		INSERT INTO W_USER VALUES (#{id},#{pwd},#{name},#{hint},#{hint_answer})
 	</insert>
-	<update id="update" parameterType="user">
-		UPDATE W_USER SET PWD=#{pwd},NAME=#{name},HINT=#{hint},HINT_ANSWER=#{hint_answer} WHERE ID=#{id}
+	<update id="update" parameterType="User">
+		UPDATE W_USER SET PWD=#{pwd},NAME=#{name} WHERE ID=#{id}
 	</update>
 	<delete id="delete" parameterType="String">
 		DELETE FROM W_USER WHERE ID=#{id}

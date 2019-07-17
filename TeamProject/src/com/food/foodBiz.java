@@ -36,11 +36,12 @@ public class foodBiz implements ObjectBiz<String, Food> {
 	}
 
 	@Override
-	public Food select(String k) {
+	public ArrayList<Food> select(String k) {
 		// TODO Auto-generated method stub
 		return dao.select(k);
 	}
 
+	
 	@Override
 	public ArrayList<Food> selectAll() {
 		// TODO Auto-generated method stub

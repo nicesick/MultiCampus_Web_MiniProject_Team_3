@@ -8,7 +8,8 @@ public interface foodMapper {
 	public void insert(Food v);
 	public void delete(String k);
 	public void update(Food v);
-	public Food select(String k);
+	public ArrayList<Food> select(String id);
+//	public Food selectWithId(String id);
 	public ArrayList<Food> selectall();
 }
 

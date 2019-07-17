@@ -33,7 +33,7 @@ public class UserController {
 	@RequestMapping("/loginimpl.mc")
 	public void loginimpl(String id, String pwd, HttpServletResponse response, HttpSession session) {
 		System.out.println(id+" "+pwd);
-		User user = biz.select(id);
+		User user = biz.select(id).get(0);
 		String result = "";
 		response.setCharacterEncoding("UTF-8");
 		if (user != null && pwd != null && !pwd.equals("") && user.getPwd().equals(pwd)) {
@@ -109,7 +109,7 @@ public class UserController {
 	@RequestMapping("/check.mc")
 	@ResponseBody
 	public void check(String id, HttpServletResponse response) {
-		User user = biz.select(id);
+		User user = biz.select(id).get(0);
 		String result = "";
 		response.setCharacterEncoding("UTF-8");
 		

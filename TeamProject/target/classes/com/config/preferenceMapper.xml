@@ -9,7 +9,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	resultType="String">
 		SELECT food_id FROM Preference WHERE ID=#{id}
 	</select>
-	
+	<select id="selectById" parameterType="String" 
+	resultType="food">
+		select * 
+		from food
+		where id in (
+			SELECT food_id FROM Preference WHERE user_ID=#{id}
+		)
+	</select>
 	<select id="selectall" 
 	resultType="String">
 		SELECT * FROM Preference ORDER BY 1

@@ -35,14 +35,18 @@ public class foodDao implements ObjectDao<String, Food> {
 	}
 
 	@Override
-	public Food select(String k) {
+	public ArrayList<Food> select(String k) {
 		// TODO Auto-generated method stub
+		System.out.println(k+" in food Dao");
 		return fm.select(k);
 	}
 
+	
+	
 	@Override
 	public ArrayList<Food> selectAll() {
 		// TODO Auto-generated method stub
+		
 		return fm.selectall();
 	}
 

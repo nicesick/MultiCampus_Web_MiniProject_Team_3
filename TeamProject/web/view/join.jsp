@@ -7,7 +7,7 @@
 			var id = document.getElementById("user_id").value;
 
 			if (id == "") {
-				alert("아이디를 입력하세요");
+				alertify.alert("아이디를 입력하세요");
 				return false;
 			}
 
@@ -19,11 +19,11 @@
 				success : function(result) {
 					console.log(result);
 					if(result == "1"){
-						alert("사용할 수 있는 아이디입니다.");
+						alertify.alert("사용할 수 있는 아이디입니다.");
 						var btn_join = document.getElementById('btn_join'); 
 						btn_join.disabled = false;
 					}else if(result == "0"){
-						alert("이미 존재하는 아이디입니다.");
+						alertify.alert("이미 존재하는 아이디입니다.");
 						var btn_join = document.getElementById('btn_join'); 
 						btn_join.disabled = true;
 					}
@@ -36,7 +36,7 @@
 			var pwd_c = document.getElementById("user_pwd_check").value;
 			
 			if(pwd != pwd_c){
-				alert("비밀번호가 일치하지 않습니다.");
+				alertify.alert("비밀번호가 일치하지 않습니다.");
 				return;
 				
 			} else{

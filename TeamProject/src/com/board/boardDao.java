@@ -35,7 +35,7 @@ public class boardDao implements ObjectDao<String, Board> {
 	}
 
 	@Override
-	public Board select(String k) {
+	public ArrayList<Board> select(String k) {
 		// TODO Auto-generated method stub
 		return mp.select(k);
 	}

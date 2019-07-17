@@ -36,7 +36,7 @@ public class boardBiz implements ObjectBiz<String, Board> {
 	}
 
 	@Override
-	public Board select(String k) {
+	public ArrayList<Board> select(String k) {
 		// TODO Auto-generated method stub
 		return dao.select(k);
 	}

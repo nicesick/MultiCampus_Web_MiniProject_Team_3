@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.frame.StringBiz;
 import com.frame.StringDao;
 
-@Component("IgnoreBIz")
+@Component("IgnoreBiz")
 public class ignoreBiz implements StringBiz<String, String> {
 
 	@Resource(name="IgnoreDao")

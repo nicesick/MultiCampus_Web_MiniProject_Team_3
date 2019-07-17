@@ -35,7 +35,7 @@ public class userBiz implements ObjectBiz<String, User> {
 	}
 
 	@Override
-	public User select(String k) {
+	public ArrayList<User> select(String k) {
 		// TODO Auto-generated method stub
 		return dao.select(k);
 	}

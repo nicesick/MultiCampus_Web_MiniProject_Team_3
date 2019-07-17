@@ -6,25 +6,11 @@ public class Food {
 	String imgName1;
 	String imgName2;
 	String imgName3;
-	int category;
+	String category;
 	public Food() {
 		super();
 	}
-	
-	
-	//id가 없음, insert 용
-	public Food(String name, String imgName1, String imgName2, String imgName3, int category) {
-		super();
-		this.name = name;
-		this.imgName1 = imgName1;
-		this.imgName2 = imgName2;
-		this.imgName3 = imgName3;
-		this.category = category;
-	}
-
-
-	//id가 있음, 그외
-	public Food(int id, String name, String imgName1, String imgName2, String imgName3, int category) {
+	public Food(int id, String name, String imgName1, String imgName2, String imgName3, String category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -63,17 +49,19 @@ public class Food {
 	public void setImgName3(String imgName3) {
 		this.imgName3 = imgName3;
 	}
-	public int getCategory() {
+	public String getCategory() {
 		return category;
 	}
-	public void setCategory(int category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 	@Override
 	public String toString() {
-		return "food [id=" + id + ", name=" + name + ", imgName1=" + imgName1 + ", imgName2=" + imgName2 + ", imgName3="
+		return "Food [id=" + id + ", name=" + name + ", imgName1=" + imgName1 + ", imgName2=" + imgName2 + ", imgName3="
 				+ imgName3 + ", category=" + category + "]";
 	}
+	
+	
 	
 	
 }

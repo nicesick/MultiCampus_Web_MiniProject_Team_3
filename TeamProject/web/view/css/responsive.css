@@ -27,13 +27,6 @@
 	.subscribe-row h5 {
 		font-size:18px;
 	}
-	.wide-col-laptop1 {
-		-ms-flex: 0 0 85%;
-		flex: 0 0 85%;
-		align-content: center;
-		align-self: center;
-		max-width: 85%;
-	}
 	.wide-col-laptop {
 		-ms-flex: 0 0 85%;
 		flex: 0 0 85%;

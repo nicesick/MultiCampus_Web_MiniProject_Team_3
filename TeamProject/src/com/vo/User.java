@@ -20,14 +20,6 @@ public class User {
 		this.hint = hint;
 		this.hint_answer = hint_answer;
 	}
-	
-
-
-	public User(String id, String pwd) {
-		super();
-		this.id = id;
-		this.pwd = pwd;
-	}
 
 
 
@@ -72,18 +64,24 @@ public class User {
 		this.name = name;
 	}
 
+	
+
+
 	public String getHint() {
 		return hint;
 	}
+
+
 
 	public void setHint(String hint) {
 		this.hint = hint;
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", pwd=" + pwd + ", name=" + name + ", hint=" + hint + ", hint_answer=" + hint_answer + "]";
+		return "User [id=" + id + ", pwd=" + pwd + ", name=" + name + ", hint=" + hint + ", hint_id=" + hint_answer + "]";
 	}
 		
 	

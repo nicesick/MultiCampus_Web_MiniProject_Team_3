@@ -7,7 +7,7 @@ public interface userMapper {
 	public void insert(User obj);
 	public void delete(String obj);
 	public void update(User obj);
-	public User select(String obj);
+	public ArrayList<User> select(String obj);
 	public ArrayList<User> selectall();
 }
 

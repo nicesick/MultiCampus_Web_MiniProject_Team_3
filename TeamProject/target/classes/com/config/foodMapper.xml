@@ -5,10 +5,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.mapper.foodMapper">
 
 	
-	<select id="select" parameterType="String" 
+<!-- 	<select id="select" parameterType="String" 
 	resultType="food">
 		SELECT * FROM food WHERE ID=#{id}
+	</select> -->
+	
+	<select id="select" parameterType="String"
+	resultType="food">
+		select food.* from food
+		where food.id not in( 
+			select food_id 
+			from (select * from preference union select * from ignore)
+			where user_id=#{id}
+		)
 	</select>
+	
 	
 	<select id="selectall" 
 	resultType="food">

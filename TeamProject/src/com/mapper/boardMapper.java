@@ -8,7 +8,7 @@ public interface boardMapper {
 	public void insert(Board board);
 	public void delete(String id);
 	public void update(Board board);
-	public Board select(String id);
+	public ArrayList<Board> select(String id);
 	public ArrayList<Board> selectall();
 }
 
