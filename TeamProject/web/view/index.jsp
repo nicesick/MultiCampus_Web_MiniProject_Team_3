@@ -7,8 +7,7 @@
 <html lang="en">
 
 <head>
-<title>¸Ş´º ÃßÃµ ½Ã½ºÅÛ! ¿À´Ã ¹¹ eatÁö?</title>
-<link rel="stylesheet" href="view/main.css" type="text/css" />
+<title>ë©”ë‰´ ì¶”ì²œ ì‹œìŠ¤í…œ! ì˜¤ëŠ˜ ë­ eatì§€?</title>
 <link rel="stylesheet" href="view/css/kakaoMap.css">
 
 <script type="text/javascript"
@@ -27,7 +26,7 @@
 	href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900"
 	rel="stylesheet">
 
-<title>¸Ş´º ÃßÃµ ½Ã½ºÅÛ, ¿À´Ã ¹¹ EATÁö?</title>
+<title>ë©”ë‰´ ì¶”ì²œ ì‹œìŠ¤í…œ, ì˜¤ëŠ˜ ë­ EATì§€?</title>
 <!--
 Elegance Template
 https://templatemo.com/tm-528-elegance
@@ -77,7 +76,7 @@ https://templatemo.com/tm-528-elegance
 			<div class="container-fluid">
 				<div class="navbar">
 					<br> <a href="#slide01" id="logo"
-						title="Elegance by TemplateMo"> <br>¿À´Ã ¹¹ eatÁö?
+						title="Elegance by TemplateMo"> <br>ì˜¤ëŠ˜ ë­ eatì§€?
 					</a>
 					<div class="navigation-row">
 						<nav id="navigation">
@@ -91,9 +90,17 @@ https://templatemo.com/tm-528-elegance
 									<li data-menuanchor="slide02"><a href="#slide02">Setting</a></li>
 									<li data-menuanchor="slide03"><a href="#slide03">Roullets</a></li>
 									<li data-menuanchor="slide04"><a href="#slide04">Maps</a></li>
-									<li data-menuanchor="slide05"><a href="#slide05">About
-											us</a></li>
-									<li data-menuanchor="slide06"><a href="#slide06">Testimonials</a></li>
+						
+									<c:choose>
+										<c:when test="${loginInfo == null }">
+											<li data-menuanchor="slide05"><a href="#slide05">Login</a></li>
+											<li data-menuanchor="slide06"><a href="#slide06">Join</a></li>
+										</c:when>
+										<c:otherwise>
+											<li data-menuanchor="slide05"><a href="logout.mc">Logout</a></li>
+											<li data-menuanchor="slide06"><a href="#slide06">Mypage</a></li>
+										</c:otherwise>
+									</c:choose>
 								</ul>
 							</div>
 						</nav>
@@ -110,15 +117,22 @@ https://templatemo.com/tm-528-elegance
 			<div class="section animated-row" data-section="slide01">
 				<div class="section-inner">
 					<div class="welcome-box">
-						<span class="welcome-first animate" data-animate="fadeInUp">½Ä»ç
-							½Ã°£¸¸ µÇ¸é °í¹ÎÇÏ¼ÌÁÒ?</span>
-						<h1 class="welcome-title animate" data-animate="fadeInUp">¡®¿À´Ã
-							¹¹ ¸ÔÁö?¡¯</h1>
-						<p class="animate" data-animate="fadeInUp">ÀÌÁ¦, ÀúÈñ°¡ °áÁ¤ÇØµå¸³´Ï´Ù.</p>
+						<span class="welcome-first animate" data-animate="fadeInUp">ì‹ì‚¬
+							ì‹œê°„ë§Œ ë˜ë©´ ê³ ë¯¼í•˜ì…¨ì£ ?</span>
+						<h1 class="welcome-title animate" data-animate="fadeInUp">â€˜ì˜¤ëŠ˜
+							ë­ ë¨¹ì§€?â€™</h1>
+						<p class="animate" data-animate="fadeInUp">ì´ì œ, ì €í¬ê°€ ê²°ì •í•´ë“œë¦½ë‹ˆë‹¤.</p>
 						<div class="next-section span" data-animate="fadeInUp">
-
-							<a href="login.mc#slide06">Login</a> <a href="join.mc#slide06">Join</a>
-
+							<c:choose>
+								<c:when test="${loginInfo == null }">
+									<a href="#slide05">Login</a>
+									<a href="#slide06">Join</a>
+								</c:when>
+								<c:otherwise>
+									<a href="logout.mc">Logout</a>
+									<a href="#slide06">Mypage</a>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>
@@ -147,20 +161,20 @@ https://templatemo.com/tm-528-elegance
 													data-animate="fadeInUp">
 													<div class="counter-box">
 														<i class="fa fa-desktop counter-icon" aria-hidden="true"></i><span
-															class="count-number">·ê·¿ µ¹¸®±â</span>
+															class="count-number">ë£°ë › ëŒë¦¬ê¸°</span>
 													</div>
 												</div>
 
 												<div class="item animate p_add" data-animate="fadeInUp">
 													<div class="counter-box">
 														<i class="fa fa-desktop counter-icon" aria-hidden="true"></i><span
-															class="count-number">Ãß°¡</span>
+															class="count-number">ì¶”ê°€</span>
 													</div>
 												</div>
 												<div class="item animate p_delete" data-animate="fadeInUp">
 													<div class="counter-box">
 														<i class="fa fa-desktop counter-icon" aria-hidden="true"></i><span
-															class="count-number">»èÁ¦</span>
+															class="count-number">ì‚­ì œ</span>
 													</div>
 												</div>
 											</div>
@@ -214,43 +228,38 @@ https://templatemo.com/tm-528-elegance
 																		</tr>
 																		<tr>
 																			<td width="78" align="center" id="pw3"
-																				onClick="powerSelected(3);">¼¼°Ô</td>
+																				onClick="powerSelected(3);">ì„¸ê²Œ</td>
 																		</tr>
 																		<tr>
 																			<td align="center" id="pw2"
-																				onClick="powerSelected(2);">Àû´çÈ÷</td>
+																				onClick="powerSelected(2);">ì ë‹¹íˆ</td>
 																		</tr>
 																		<tr>
 																			<td align="center" id="pw1"
-																				onClick="powerSelected(1);">¾àÇÏ°Ô</td>
+																				onClick="powerSelected(1);">ì•½í•˜ê²Œ</td>
 																		</tr>
 																	</table>
 																	<br /> <img id="spin_button"
-																		src="view/images/button1.jpg" alt="Spin" /> <br />
-																	<br /> &nbsp;&nbsp;<a href="#" text-align="center"
-																		id="resetWheel" returnfalse;">&nbsp;Reset</a>
+																		src="view/images/button1.jpg" alt="Spin" /> <br /> <br />
+																	&nbsp;&nbsp;<a href="#" text-align="center"
+																		id="resetWheel"returnfalse;">&nbsp;Reset</a>
 																</div>
 															</td>
 															<td id="wheel_back" width="438" height="582"
-																class="the_wheel" align="center" valign="center">
-																¡å
+																class="the_wheel" align="center" valign="center">â–¼
 																<canvas id="canvas" width="434" height="434">
-
 																</canvas>
 															</td>
 															<td width="438" height="582" class="the_wheel"
 																valign="center" align="center">
-
 																<canvas align="right" id="myCanvas" width="434"
 																	height="434">
 																</canvas>
-																<h1 id="start_check" style="text-align: center;">&nbsp;°Ë»öÇÏ±â</h1>
-
+																<h1 id="start_check" style="text-align: center;">&nbsp;ê²€ìƒ‰í•˜ê¸°</h1>
 															</td>
 														</tr>
 													</table>
 												</div>
-
 											</div>
 										</div>
 									</div>
@@ -260,8 +269,6 @@ https://templatemo.com/tm-528-elegance
 					</div>
 				</div>
 			</div>
-
-
 			<div class="section animated-row" data-section="slide04">
 				<div class="section-inner">
 					<div class="row justify-content-center">
@@ -271,14 +278,13 @@ https://templatemo.com/tm-528-elegance
 								<div id="menu_wrap" class="bg_white">
 									<div class="option">
 										<div>
-											Å°¿öµå: <input type="text" value="ÀÌÅÂ¿ø ¸ÀÁı" id="keyword" size="15">
-											<button type="submit">°Ë»öÇÏ±â</button>
+											í‚¤ì›Œë“œ: <input type="text" value="ì´íƒœì› ë§›ì§‘" id="keyword" size="15">
+											<button type="submit">ê²€ìƒ‰í•˜ê¸°</button>
 										</div>
 									</div>
 									<hr>
 									<ul id="placesList"></ul>
 								</div>
-
 								<div>
 									<a href="#"><button id="myPosition"
 											class="position_control">P</button></a>
@@ -289,206 +295,33 @@ https://templatemo.com/tm-528-elegance
 				</div>
 			</div>
 
-
-
-
 			<div class="section animated-row" data-section="slide05">
-				<div class="section-inner">
-					<div class="row justify-content-center">
-						<div class="col-md-8 wide-col-laptop">
-							<div class="title-block animate" data-animate="fadeInUp">
-								<span>My Work</span>
-								<h2>what i¡¯ve done?</h2>
-							</div>
-							<div class="gallery-section">
-								<div class="gallery-list owl-carousel">
-
-									<div class="item animate" data-animate="fadeInUp">
-										<div class="portfolio-item">
-											<div class="thumb">
-												<img src="view/images/item-2.jpg" alt="">
-											</div>
-											<div class="thumb-inner animate" data-animate="fadeInUp">
-												<h4>templatemo is the best</h4>
-												<p>Please tell your friends about it. Templatemo is the
-													best website to download free Bootstrap themes.</p>
-											</div>
-										</div>
-									</div>
-									<div class="item animate" data-animate="fadeInUp">
-										<div class="portfolio-item">
-											<div class="thumb">
-												<img src="view/images/item-3.jpg" alt="">
-											</div>
-											<div class="thumb-inner animate" data-animate="fadeInUp">
-												<h4>templatemo is the best</h4>
-												<p>Please tell your friends about it. Templatemo is the
-													best website to download free Bootstrap layouts.</p>
-											</div>
-										</div>
-									</div>
-									<div class="item animate" data-animate="fadeInUp">
-										<div class="portfolio-item">
-											<div class="thumb">
-												<img src="view/images/item-1.jpg" alt="">
-											</div>
-											<div class="thumb-inner animate" data-animate="fadeInUp">
-												<h4>templatemo is the best</h4>
-												<p>Please tell your friends about it. Templatemo is the
-													best website to download free Bootstrap templates.</p>
-											</div>
-										</div>
-									</div>
-									<div class="item animate" data-animate="fadeInUp">
-										<div class="portfolio-item">
-											<div class="thumb">
-												<img src="view/images/item-2.jpg" alt="">
-											</div>
-											<div class="thumb-inner animate" data-animate="fadeInUp">
-												<h4>templatemo is the best</h4>
-												<p>Please tell your friends about it. Templatemo is the
-													best website to download Bootstrap CSS templates.</p>
-											</div>
-										</div>
-									</div>
-									<div class="item animate" data-animate="fadeInUp">
-										<div class="portfolio-item">
-											<div class="thumb">
-												<img src="view/images/item-3.jpg" alt="">
-											</div>
-											<div class="thumb-inner animate" data-animate="fadeInUp">
-												<h4>templatemo is the best</h4>
-												<p>Please tell your friends about it. Templatemo is the
-													best website to download free Bootstrap templates.</p>
-											</div>
-										</div>
-									</div>
-									<div class="item animate" data-animate="fadeInUp">
-										<div class="portfolio-item">
-											<div class="thumb">
-												<img src="view/images/item-1.jpg" alt="">
-											</div>
-											<div class="thumb-inner animate" data-animate="fadeInUp">
-												<h4>templatemo is the best</h4>
-												<p>Please tell your friends about it. Templatemo is the
-													best website to download free Bootstrap templates.</p>
-											</div>
-										</div>
-									</div>
-									<div class="item animate" data-animate="fadeInUp">
-										<div class="portfolio-item">
-											<div class="thumb">
-												<img src="view/images/item-2.jpg" alt="">
-											</div>
-											<div class="thumb-inner animate" data-animate="fadeInUp">
-												<h4>templatemo is the best</h4>
-												<p>Please tell your friends about it. Templatemo is the
-													best website to download free Bootstrap templates.</p>
-											</div>
-										</div>
-									</div>
-									<div class="item animate" data-animate="fadeInUp">
-										<div class="portfolio-item">
-											<div class="thumb">
-												<img src="view/images/item-3.jpg" alt="">
-											</div>
-											<div class="thumb-inner animate" data-animate="fadeInUp">
-												<h4>templatemo is the best</h4>
-												<p>Please tell your friends about it. Templatemo is the
-													best website to download free Bootstrap templates.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<%-- <div class="section animated-row" data-section="slide06">
-				<div class="section-inner">
-					<div class="row justify-content-center">
-						<div class="col-md-7 wide-col-laptop">
-							<div class="title-block animate" data-animate="fadeInUp">
-								<span>È¸¿ø°¡ÀÔ ÆäÀÌÁö</span>
-							</div>
-							<c:choose>
-								<c:when test="${center == null }">
-									<jsp:include page="view/join.jsp"></jsp:include>
-								</c:when>
-								<c:otherwise>
-									<jsp:include page="view/${center }.jsp"></jsp:include>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</div>
-				</div>
-			</div> --%>
-
-			<!-- È¸¿ø°¡ÀÔ ÆäÀÌÁö·Î ÀÌµ¿ÇÏ±â -->
-			<%-- <c:choose>
-				<c:when test="${center == null }">
-					<jsp:include page="view/join.jsp"></jsp:include>
-				</c:when>
-				<c:otherwise>
-					<jsp:include page="view/${center }.jsp"></jsp:include>
-				</c:otherwise>
-			</c:choose> --%>
-
-			<!-- ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿ÇÏ±â -->
-			<%-- <div class="section animated-row" data-section="slide07">
-				<div class="section-inner">
-					<div class="row justify-content-center">
-						<div class="col-md-7 wide-col-laptop">
-							<div class="title-block animate" data-animate="fadeInUp">
-								<span>·Î±×ÀÎ ÆäÀÌÁö</span>
-							</div>
-							<c:choose>
-								<c:when test="${center == null }">
-									<jsp:include page="view/login.jsp"></jsp:include>
-								</c:when>
-								<c:otherwise>
-									<jsp:include page="view/${center }.jsp"></jsp:include>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</div>
-				</div>
-			</div> --%>
-
-			<div class="section animated-row" data-section="slide06">
 				<c:choose>
-					<c:when test="${center == null }">
+					<c:when test="${loginInfo == null }">
 						<jsp:include page="login.jsp"></jsp:include>
 					</c:when>
 					<c:otherwise>
-						<jsp:include page="${center }.jsp"></jsp:include>
+						<jsp:include page="loginok.jsp"></jsp:include>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			
+			<div class="section animated-row" data-section="slide06">
+				<c:choose>
+					<c:when test="${loginInfo== null }">
+						<jsp:include page="join.jsp"></jsp:include>
+					</c:when>
+					<c:otherwise>
+						<jsp:include page="user_update.jsp"></jsp:include>
 					</c:otherwise>
 				</c:choose>
 			</div>
 
 		</div>
 
-		<div id="social-icons">
-			<div class="text-right">
-				<ul class="social-icons">
-					<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-					<li><a href="#" title="Instagram"><i class="fa fa-behance"></i></a></li>
-				</ul>
-			</div>
-		</div>
-
-
 	</div>
-
 	<script type="text/javascript" src="view/js/kakaoMap_geolocation.js"></script>
 	<script type="text/javascript" src="view/js/kakaoMap_request.js"></script>
-
-
-
 	<script src="view/js/jquery.js"></script>
 	<script src="view/js/bootstrap.min.js"></script>
 	<script src="view/js/fullpage.min.js"></script>
@@ -498,44 +331,38 @@ https://templatemo.com/tm-528-elegance
 	<script src="view/js/form.js"></script>
 	<script src="view/js/custom.js"></script>
 	<script src="view/js/Winwheel.js"></script>
-
 	<script>
 		function delete1() {
 			$('html, body').animate({
 				scrollTop : target.offset().top - top_space
 			}, 1500, 'easeInOutExpo');
 		};
-
-		var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div
+		var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div
 		mapOption = {
-			center : new kakao.maps.LatLng(37.566826, 126.9786567), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
-			// center: new kakao.maps.LatLng(35.233446, 127.650310), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
+			center : new kakao.maps.LatLng(37.566826, 126.9786567), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+			// center: new kakao.maps.LatLng(35.233446, 127.650310), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
 			level : 3
-		// ÁöµµÀÇ È®´ë ·¹º§
+		// ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
 		};
-
-		// Áöµµ¸¦ »ı¼ºÇÕ´Ï´Ù 
+		// ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤ 
 		map = new kakao.maps.Map(mapContainer, mapOption);
-		// Àå¼Ò °Ë»ö °´Ã¼¸¦ »ı¼ºÇÕ´Ï´Ù
+		// ì¥ì†Œ ê²€ìƒ‰ ê°ì²´ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 		ps = new kakao.maps.services.Places();
-		// °Ë»ö °á°ú ¸ñ·ÏÀÌ³ª ¸¶Ä¿¸¦ Å¬¸¯ÇßÀ» ¶§ Àå¼Ò¸íÀ» Ç¥ÃâÇÒ ÀÎÆ÷À©µµ¿ì¸¦ »ı¼ºÇÕ´Ï´Ù
+		// ê²€ìƒ‰ ê²°ê³¼ ëª©ë¡ì´ë‚˜ ë§ˆì»¤ë¥¼ í´ë¦­í–ˆì„ ë•Œ ì¥ì†Œëª…ì„ í‘œì¶œí•  ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 		infowindow = new kakao.maps.InfoWindow({
 			zIndex : 1
 		});
-
 		userPosition = {};
 		markers = [];
-
 		var numSegments = 0;
 		var FoodList = new Array();
 		var flag = 0;
 		var theWheel;
-
 		var roullet_result;
-
-		$(document).ready(function() {
-				$('.go_to_roullet').click(function() {
-
+		$(document)
+				.ready(
+						function() {
+							$('.go_to_roullet').click(function() {
 								// Create new wheel object specifying the parameters at creation time.
 								theWheel = new Winwheel({
 									'numSegments' : numSegments, // Specify number of segments.
@@ -557,23 +384,18 @@ https://templatemo.com/tm-528-elegance
 									// Number of pins. They space evenly around the wheel.
 									}
 								});
-
 								location.href = "#slide03";
-
 								draw();
-
 							});
-
 							$("#start_check").click(function() {
 								alert(roullet_result.text);
 							});
-
 							$("#spin_button").click(function() {
 								startSpin();
 							});
 							$("#resetWheel").click(function() {
-								
-								/* ·ê·¿ ÀüÃ¼ »èÁ¦ */
+
+								/* ë£°ë › ì „ì²´ ì‚­ì œ */
 								/* FoodList.splice(0,FoodList.length);
 								numSegments=0;
 								theWheel = new Winwheel({
@@ -598,43 +420,33 @@ https://templatemo.com/tm-528-elegance
 								}); */
 								resetWheel();
 							});
-
 							//startSpin();
 							$('.p_add').click(function() {
 								numSegments++;
-
 								if (numSegments % 2 == 1) {
 									FoodList.push({
 										'fillStyle' : '#F6F6F6',
-										'text' : 'µÈÀåÂî°³'
+										'text' : 'ëœì¥ì°Œê°œ'
 									});
-
 								} else {
 									FoodList.push({
 										'fillStyle' : '#EAEAEA',
-										'text' : '±èÄ¡Âî°³'
+										'text' : 'ê¹€ì¹˜ì°Œê°œ'
 									});
-
 								}
-
 							});
-
 							// -----------------------------------------------------------------
 							// This function is called when the segment under the prize pointer changes
 							// we can play a small tick sound here like you would expect on real prizewheels.
 							// -----------------------------------------------------------------
 							let audio = new Audio('tick.mp3'); // Create audio object and load tick.mp3 file.
-
 							function playSound() {
-
 								// Stop and rewind the sound if it already happens to be playing.
 								audio.pause();
 								audio.currentTime = 0;
-
 								// Play the sound.
 								audio.play();
 							}
-
 							// -------------------------------------------------------
 							// Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters
 							// note the indicated segment is passed in as a parmeter as 99% of the time you will want to know this to inform the user of their prize.
@@ -643,17 +455,14 @@ https://templatemo.com/tm-528-elegance
 								// Do basic alert of the segment text.
 								// You would probably want to do something more interesting with this information.
 								alert("You have won " + indicatedSegment.text);
-
 								roullet_result = indicatedSegment;
 							}
-
 							// =======================================================================================================================
 							// Code below for the power controls etc which is entirely optional. You can spin the wheel simply by
 							// calling theWheel.startAnimation();
 							// =======================================================================================================================
 							let wheelPower = 0;
 							let wheelSpinning = false;
-
 							// -------------------------------------------------------
 							// Function to handle the onClick on the power buttons.
 							// -------------------------------------------------------
@@ -664,29 +473,23 @@ https://templatemo.com/tm-528-elegance
 									document.getElementById('pw1').className = "";
 									document.getElementById('pw2').className = "";
 									document.getElementById('pw3').className = "";
-
 									// Now light up all cells below-and-including the one selected by changing the class.
 									if (powerLevel >= 1) {
 										document.getElementById('pw1').className = "pw1";
 									}
-
 									if (powerLevel >= 2) {
 										document.getElementById('pw2').className = "pw2";
 									}
-
 									if (powerLevel >= 3) {
 										document.getElementById('pw3').className = "pw3";
 									}
-
 									// Set wheelPower var used when spin button is clicked.
 									wheelPower = powerLevel;
-
 									// Light up the spin button by changing it's source image and adding a clickable class to it.
 									document.getElementById('spin_button').src = "view/images/button1.jpg";
 									document.getElementById('spin_button').className = "clickable";
 								}
 							}
-
 							// -------------------------------------------------------
 							// Click handler for spin button.
 							// -------------------------------------------------------
@@ -702,20 +505,16 @@ https://templatemo.com/tm-528-elegance
 									} else if (wheelPower == 3) {
 										theWheel.animation.spins = 15;
 									}
-
 									// Disable the spin button so can't click again while wheel is spinning.
 									document.getElementById('spin_button').src = "view/images/button1.jpg";
 									document.getElementById('spin_button').className = "";
-
 									// Begin the spin animation by calling startAnimation on the wheel object.
 									theWheel.startAnimation();
-
 									// Set to true so that power can't be changed and spin button re-enabled during
 									// the current animation. The user will have to reset before spinning again.
 									wheelSpinning = true;
 								}
 							}
-
 							// -------------------------------------------------------
 							// Function for reset button.
 							// -------------------------------------------------------
@@ -723,38 +522,26 @@ https://templatemo.com/tm-528-elegance
 								theWheel.stopAnimation(false); // Stop the animation, false as param so does not call callback function.
 								theWheel.rotationAngle = 0; // Re-set the wheel angle to 0 degrees.
 								theWheel.draw(); // Call draw to render changes to the wheel.
-
 								document.getElementById('pw1').className = ""; // Remove all colours from the power level indicators.
 								document.getElementById('pw2').className = "";
 								document.getElementById('pw3').className = "";
-
 								wheelSpinning = false; // Reset to false to power buttons and spin can be clicked again.
 							}
-
 						});
-
 		function draw() {
-
-			//ÀÌ¹ÌÁö °´Ã¼ »ı¼º
+			//ì´ë¯¸ì§€ ê°ì²´ ìƒì„±
 			var imgClo = new Image();
-
-			//ÆäÀÌÁö ·ÎµåÈÄ ÀÌ¹ÌÁö°¡ ·Îµå µÇ¾úÀ» ¶§ ÀÌ¹ÌÁö Ãâ·Â
+			//í˜ì´ì§€ ë¡œë“œí›„ ì´ë¯¸ì§€ê°€ ë¡œë“œ ë˜ì—ˆì„ ë•Œ ì´ë¯¸ì§€ ì¶œë ¥
 			imgClo.addEventListener('load', function() {
-				//·ÎµåµÈ ÀÌ¹ÌÁö¸¦ Äµ¹ö½º¿¡ Ãâ·Â
+				//ë¡œë“œëœ ì´ë¯¸ì§€ë¥¼ ìº”ë²„ìŠ¤ì— ì¶œë ¥
 				var ctx = document.getElementById('myCanvas').getContext("2d");
-
-				//canvas.drawImage() ÇÔ¼ö¸¦ »ç¿ëÇÏ¿© ÀÌ¹ÌÁö Ãâ·Â
+				//canvas.drawImage() í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì—¬ ì´ë¯¸ì§€ ì¶œë ¥
 				//drawImage ( image sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
 				ctx.drawImage(imgClo, 20, 30, 400, 400);
-
 			}, false);
-
-			//ÀÌ¹ÌÁö °æ·Î ¼³Á¤
+			//ì´ë¯¸ì§€ ê²½ë¡œ ì„¤ì •
 			imgClo.src = "view/images/img01.jpg";
-
 		}
 	</script>
-
 </body>
-
 </html>

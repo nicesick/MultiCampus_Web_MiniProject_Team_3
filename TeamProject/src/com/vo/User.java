@@ -20,6 +20,14 @@ public class User {
 		this.hint = hint;
 		this.hint_answer = hint_answer;
 	}
+	
+
+
+	public User(String id, String pwd) {
+		super();
+		this.id = id;
+		this.pwd = pwd;
+	}
 
 
 

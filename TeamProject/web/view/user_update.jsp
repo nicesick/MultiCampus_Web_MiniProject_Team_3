@@ -14,12 +14,22 @@
 						<!-- <form id="ajax-contact" method="post" action="#"> -->
 						<div class="col-md-6 animate" data-animate="fadeInUp">
 							<div class="input-field">
-								<input type="text" class="form-control" name="id"
-									id="userid" value="${loginInfo.id }" readonly="readonly">
+								<input type="text" class="form-control" name="id" id="userid"
+									value="${loginInfo.id }" readonly="readonly">
 							</div>
 							<div class="input-field">
-								<input type="text" class="form-control" name="pwd" id="pwd"
-									value="${loginInfo.pwd }">
+								<c:choose>
+									<c:when test="${updateInfo == null }">
+										<input type="text" class="form-control" name="pwd" id="pwd"
+											value="${loginInfo.pwd }">
+									</c:when>
+									<c:otherwise>
+										<input type="text" class="form-control" name="pwd" id="pwd"
+											value="${updateInfo.pwd }">
+									</c:otherwise>
+								</c:choose>
+								<%-- <input type="text" class="form-control" name="pwd" id="pwd"
+									value="${loginInfo.pwd }"> --%>
 							</div>
 							<div class="input-field">
 								<input type="text" class="form-control" name="pwd_check"
@@ -32,14 +42,35 @@
 									value="${loginInfo.name }" readonly="readonly">
 							</div>
 							<div class="input-field">
-								<input type="text" class="form-control" name="hint" id="hint"
-									value="${loginInfo.hint }">
+								<c:choose>
+									<c:when test="${updateInfo == null }">
+										<input type="text" class="form-control" name="hint" id="hint"
+											value="${loginInfo.hint }">
+									</c:when>
+									<c:otherwise>
+										<input type="text" class="form-control" name="hint" id="hint"
+											value="${updateInfo.hint }">
+									</c:otherwise>
+								</c:choose>
+								<%-- <input type="text" class="form-control" name="hint" id="hint"
+									value="${loginInfo.hint }"> --%>
 							</div>
 							<div class="input-field">
-								<input type="text" class="form-control" name="hint_answer"
+								<c:choose>
+									<c:when test="${updateInfo == null }">
+										<input type="text" class="form-control" name="hint_answer"
 									id="hint_ans" value="${loginInfo.hint_answer }">
+									</c:when>
+									<c:otherwise>
+										<input type="text" class="form-control" name="hint_answer"
+									id="hint_ans" value="${updateInfo.hint_answer }">
+									</c:otherwise>
+								</c:choose>
+								
+								<%-- <input type="text" class="form-control" name="hint_answer"
+									id="hint_ans" value="${loginInfo.hint_answer }"> --%>
 							</div>
-							<button class="btn" type="submit">Update</button>
+							<button class="btn" type="submit">회원정보 수정</button>
 						</div>
 						<!-- </form> -->
 						<div id="form-messages" class="mt-3"></div>

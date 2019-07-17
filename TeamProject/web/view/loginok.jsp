@@ -5,6 +5,6 @@
 <div class="section-inner">
 	<div class="welcome-box">
 		<span class="welcome-first animate" data-animate="fadeInUp">
-		~~님 환영합니다</span>
+		${loginInfo.id } 님 환영합니다</span>
 	</div>
 </div>
