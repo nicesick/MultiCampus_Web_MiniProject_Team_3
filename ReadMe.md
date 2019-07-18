@@ -41,7 +41,7 @@
 
 - 카카오 맵 API를 이용한 지도
 
-  ![KakaoMap](img/Image_KakaoMap.jpg)
+  ![KakaoMap](img/Image_KakaoMap.JPG)
 
 
 
@@ -49,7 +49,7 @@
 
 - Build Path 에 설치되어 있는 Java library 추가
 
-![HowToInstall](img/Image_howToInstall.jpg)
+![HowToInstall](img/Image_howToInstall.JPG)
 
 
 
