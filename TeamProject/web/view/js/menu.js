@@ -14,21 +14,21 @@ function makeRowPre(food_id, food_name, index) {
 				},
 				success: function (data) {
 					if (data == "success") {
-						alert("successfully add food in pre");
-						// FoodList.push({ 'fillStyle': '#EAEAEA', 'text': food_name });
-						// numSegments++;
+
+						
+						
 						$('#menu_add_table > tbody > ' + tagOrder).remove();
 					}
-					else alert("fail");
+					else alertify.alert("로그인이 필요합니다");
 				},
 				error: function () {
 
-					alert("fail");
+					alertify.alert("로그인이 필요합니다");
 				}
 			});
 		}
 		else {
-			alert("id is null");
+			
 			$('#menu_add_table > tbody > ' + tagOrder).remove();
 			FoodList.push({ 'fillStyle': '#EAEAEA', 'text': food_name });
 			numSegments++;
@@ -38,14 +38,14 @@ function makeRowPre(food_id, food_name, index) {
 
 
 function makeRowIgnore(food_id, food_name, index) {
-	var rowSentence = "<tr id=" + index + "><td>" + food_id + "</td><td>" + food_name + "</td></tr>";
+	var rowSentence = "<tr id=" + index + "><td>" +  food_name + "</td></tr>";
 	$('#menu_add_table > tbody').append(rowSentence);
 	var tagOrder = "#" + index;
 	$(document).on("click", tagOrder, function (event) {
 		var tr = $(this);
 		if (user_id != null) {
 			$.ajax({
-				url: "AddIgnore.mc",
+				url: "AddPre.mc",
 				type: "POST",
 				data: {
 					"id": user_id, "name": food_id
@@ -55,11 +55,11 @@ function makeRowIgnore(food_id, food_name, index) {
 						alert("successfully add food in Ignore");
 						$('#menu_add_table > tbody > ' + tagOrder).remove();
 					}
-					else alert("fail");
+					else alertify.alert("로그인이 필요합니다");
 				},
 				error: function () {
 
-					alert("fail");
+					alertify.alert("로그인이 필요합니다");
 				}
 			});
 		}
@@ -70,10 +70,8 @@ function makeRowIgnore(food_id, food_name, index) {
 }
 
 //startSpin();
+var foodMenulist;
 $('.p_add').click(function () {
-	//numSegments++;
-	//	theWheel.segments.push({'fillStyle' : '#EAEAEA', 'text' : '된장찌개'});
-	var foodMenulist;
 	alertify.alert("메뉴를 클릭해주세요");
 	$('#menu_add_table > tbody').empty();
 
@@ -101,8 +99,8 @@ $('.p_add').click(function () {
 	});
 });
 $('.p_delete').click(function () {
-	numSegments++;
-	//	theWheel.segments.push({'fillStyle' : '#EAEAEA', 'text' : '된장찌개'});
+	//numSegments++;
+	
 	var foodlist;
 
 	$('#menu_add_table > tbody').empty();
@@ -115,7 +113,7 @@ $('.p_delete').click(function () {
 		success: function (data) {
 			var index = 0;
 			foodlist = JSON.parse(data);
-			// $.extend(true,{},JSON.parse(data));
+		
 			$.each(foodlist, function () {
 				makeRowIgnore(this.id, this.name, index);
 				index = index + 1;

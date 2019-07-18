@@ -53,14 +53,20 @@ https://templatemo.com/tm-528-elegance
 
 
 <style>
+#menu_add_table>tbody{
+	align: center;
 
-
-.auto_menu{
-	height: expression( this.scrollHeight > 99 ? "411px" : "auto" );
-    max-height: 411px;
-	overflow:auto;
 }
- 
+.auto_menu {
+	width:auto;
+	height: expression(this.scrollHeight > 99 ? "411px" : "auto");
+	max-height: 411px;
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	
+
+}
 #dialogoverlay {
 	display: none;
 	opacity: .8;
@@ -127,9 +133,8 @@ https://templatemo.com/tm-528-elegance
 	background-image: url("view/images/img01.jpg");
 }
 
-#eat_font{
-
-font-size: 50px;
+#eat_font {
+	font-size: 50px;
 }
 </style>
 
@@ -148,8 +153,9 @@ font-size: 50px;
 			<div class="container-fluid">
 				<div class="navbar">
 					<br> <a href="#slide01" id="logo"
-						title="Elegance by TemplateMo"><br><br> <span id="eat_font">오늘 </span><span>뭐 </span><span id="eat_font">eat지?</span>
-					</a>
+						title="Elegance by TemplateMo"><br>
+					<br> <span id="eat_font">오늘 </span><span>뭐 </span><span
+						id="eat_font">eat지?</span> </a>
 					<div class="navigation-row">
 						<nav id="navigation">
 							<button type="button" class="navbar-toggle">
@@ -222,9 +228,7 @@ font-size: 50px;
 											<div class="animate" data-animate="fadeInUp">
 												<span>메뉴를</span>
 												<h1>선택하세요</h1>
-												<p>
-													
-												</p>
+												<p></p>
 											</div>
 											<div class="facts-list owl-carousel">
 												<div class="item animate go_to_roullet"
@@ -252,18 +256,16 @@ font-size: 50px;
 									</div>
 
 									<div class="col-md-6 auto_menu">
-										<div class="item animate" data-animate="fadeInUp">
+										<div>
 											<div class="portfolio-item">
-												<br>
-												<br>
-												<br>
+												
 												<div class="thumb">
 													<img id="menu_select_default_img" src="images/img01.jpg"
 														alt="">
 												</div>
-												<div class="thumb-inner animate">
-													<table id="menu_add_table">
-														<tbody>
+												<div>
+													<table id="menu_add_table" style="margin:auto; text-align:center;">
+														<tbody >
 
 														</tbody>
 
@@ -298,12 +300,28 @@ font-size: 50px;
 																<div class="power_controls">
 																	<br /> <br />
 																	<table class="power" cellpadding="10" cellspacing="0">
-																		
+																		<tr>
+																			<th align="center"></th>
+																		</tr>
+																		<tr>
+																			<td width="78" align="center" id="pw3"
+																				onClick="powerSelected(3);"></td>
+																		</tr>
+																		<tr>
+																			<td align="center" id="pw2"
+																				onClick="powerSelected(2);"></td>
+																		</tr>
+																		<tr>
+																			<td align="center" id="pw1"
+																				onClick="powerSelected(1);"></td>
+																		</tr>
 																	</table>
 																	<br /> <img id="spin_button"
 																		src="view/images/button1.jpg" alt="Spin" /> <br /> <br />
 																	&nbsp;&nbsp;<a href="#" text-align="center"
-																		id="resetWheel"returnfalse;">&nbsp;Reset</a>
+																		id="resetWheel"returnfalse;">&nbsp;
+																		Reset
+																	</a>
 																</div>
 															</td>
 															<td id="wheel_back" width="438" height="582"
@@ -376,12 +394,22 @@ font-size: 50px;
 					</c:otherwise>
 				</c:choose>
 			</div>
+				<c:choose>
+				<c:when test="${loginInfo== null }">
+					<div class="section animated-row" data-section="slide07">
+						<jsp:include page="find_pwd.jsp"></jsp:include>
+					</div>
+				</c:when>
+			</c:choose>
 
 
 
 
 			<script>
-				var user_id = null;
+			
+				var user_id = '${loginInfo.id}'; //따옴표 씌우기
+					
+				
 				function delete1() {
 					$('html, body').animate({
 						scrollTop : target.offset().top - top_space
@@ -412,14 +440,15 @@ font-size: 50px;
 				var FoodList = new Array();
 				var flag = 0;
 				var theWheel;
-
+	
+			
 				function makeRoullet() {
 					//Create new wheel object specifying the parameters at creation time.
 					theWheel = new Winwheel({
 						'numSegments' : numSegments, // Specify number of segments.
 						'outerRadius' : 212, // Set outer radius so wheel fits inside the background.
 						'textFontSize' : 28, // Set font size as desired.
-						'segments' : FoodList // Define segments including colour and text.
+						'segments' : FoodList// Define segments including colour and text.
 						,
 						'animation' : // Specify the animation to use.
 						{
@@ -442,7 +471,7 @@ font-size: 50px;
 
 				$('.go_to_roullet').click(function() {
 					if (user_id != null) {
-						
+
 						var foodJson;
 						$.ajax({
 							url : "add_pre_roullet.mc",
@@ -451,12 +480,11 @@ font-size: 50px;
 								"id" : user_id
 							},
 							success : function(data) {
-								
+
 								var index = 0;
 								foodJson = JSON.parse(data);
 								// $.extend(true,{},JSON.parse(data));
 								$.each(foodJson, function() {
-									alert(this.name);
 
 									if (numSegments % 2 == 0) {
 										numSegments++;
@@ -639,7 +667,7 @@ font-size: 50px;
 						ctx.drawImage(imgClo, 20, 30, 400, 400);
 					}, false);
 					//이미지 경로 설정
-					imgClo.src = "view/images/food/" + FoodName + ".PNG";
+					imgClo.src = "view/images/" + FoodName + ".jpg";
 				}
 			</script>
 

@@ -2,7 +2,28 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<form method="post" action="updateimpl.mc">
+<script>
+$(document).ready(function(){
+	$('#btn_update').on('click', function(){
+		var pwd = document.getElementById("pwd").value;
+		var pwd_check = document.getElementById("pwd_check").value;
+		if(pwd == pwd_check){
+			$('#form_update').attr({
+				action : 'updateimpl.mc',
+				method : 'POST'
+			});
+			$('#form_update').submit();
+			
+			
+		}else {
+			alert("비밀번호가 일치하지 않습니다.");
+		}
+	});
+});
+</script>
+
+<!-- <form method="post" action="updateimpl.mc"> -->
+<form id="form_update">
 	<div class="section-inner">
 		<div class="row justify-content-center">
 			<div class="col-md-7 wide-col-laptop">
@@ -70,7 +91,8 @@
 								<%-- <input type="text" class="form-control" name="hint_answer"
 									id="hint_ans" value="${loginInfo.hint_answer }"> --%>
 							</div>
-							<button class="btn" type="submit">회원정보 수정</button>
+							<input type="button" class="btn" id="btn_update" value="회원정보 수정">
+							<!-- <button class="btn" type="submit" >회원정보 수정</button> -->
 						</div>
 						<!-- </form> -->
 						<div id="form-messages" class="mt-3"></div>
