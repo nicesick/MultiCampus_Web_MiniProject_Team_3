@@ -11,7 +11,7 @@
 
 ## II. 시스템 구성
 
-- ![System](img/Image_System.png)
+  ![System](img/Image_System.png)
 
 
 
