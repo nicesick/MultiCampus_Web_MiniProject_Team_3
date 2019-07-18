@@ -373,6 +373,7 @@ https://templatemo.com/tm-528-elegance
 				</div>
 			</div>
 
+		<!-- 로그인 페이지 -->
 			<div class="section animated-row" data-section="slide05">
 				<c:choose>
 					<c:when test="${loginInfo == null }">
@@ -383,7 +384,8 @@ https://templatemo.com/tm-528-elegance
 					</c:otherwise>
 				</c:choose>
 			</div>
-
+			
+			<!-- 회원가입 페이지  -->
 			<div class="section animated-row" data-section="slide06">
 				<c:choose>
 					<c:when test="${loginInfo== null }">
@@ -394,13 +396,20 @@ https://templatemo.com/tm-528-elegance
 					</c:otherwise>
 				</c:choose>
 			</div>
-				<c:choose>
+
+			<!-- 비밀번호 찾기 페이지 -->
+			<c:choose>
 				<c:when test="${loginInfo== null }">
 					<div class="section animated-row" data-section="slide07">
 						<jsp:include page="find_pwd.jsp"></jsp:include>
 					</div>
 				</c:when>
 			</c:choose>
+
+
+		</div>
+
+
 
 
 
@@ -667,7 +676,7 @@ https://templatemo.com/tm-528-elegance
 						ctx.drawImage(imgClo, 20, 30, 400, 400);
 					}, false);
 					//이미지 경로 설정
-					imgClo.src = "view/images/" + FoodName + ".jpg";
+					imgClo.src = "view/images/food/" + FoodName + ".PNG";
 				}
 			</script>
 

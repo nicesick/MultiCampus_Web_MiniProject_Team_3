@@ -14,9 +14,6 @@ function makeRowPre(food_id, food_name, index) {
 				},
 				success: function (data) {
 					if (data == "success") {
-
-						
-						
 						$('#menu_add_table > tbody > ' + tagOrder).remove();
 					}
 					else alertify.alert("로그인이 필요합니다");
@@ -52,8 +49,8 @@ function makeRowIgnore(food_id, food_name, index) {
 				},
 				success: function (data) {
 					if (data == "success") {
-						alert("successfully add food in Ignore");
-						$('#menu_add_table > tbody > ' + tagOrder).remove();
+						alert("successfully delete food in Ignore");
+						$('#menu_add_table > tbody > ' + tagOrder).append();
 					}
 					else alertify.alert("로그인이 필요합니다");
 				},
@@ -105,7 +102,7 @@ $('.p_delete').click(function () {
 
 	$('#menu_add_table > tbody').empty();
 	$.ajax({
-		url: "menu_add_table_add_list.mc",
+		url: "add_pre_roullet.mc",
 		type: "POST",
 		data: {
 			"id": user_id

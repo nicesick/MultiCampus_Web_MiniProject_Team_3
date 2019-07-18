@@ -7,7 +7,7 @@
 			var id = document.getElementById("user_id").value;
 
 			if (id == "") {
-				alertify.alert("아이디를 입력하세요");
+				alert("아이디를 입력하세요");
 				return false;
 			}
 

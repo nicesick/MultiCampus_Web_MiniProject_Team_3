@@ -44,6 +44,9 @@ $(document).ready(function(){
 				<div class="input-field">
 					<input type="button" class="btn" id="btn_login" value="로그인">
 				</div>
+				<div class="input-field">
+					<input type="button" class="btn" id="btn_findPwd" onclick="location.href='#slide07'" value="비밀번호 찾기">
+				</div>
 				<!-- form.js 에서 아이디, 비번 확인해서 메세지 던지기. -->
 			</form>
 			<div id="form-messages" class="mt-3"></div>
