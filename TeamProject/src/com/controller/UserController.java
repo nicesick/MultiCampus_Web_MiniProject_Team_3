@@ -2,8 +2,8 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -35,13 +35,16 @@ public class UserController {
 	@RequestMapping("/loginimpl.mc")
 	@ResponseBody
 	public void loginimpl(String id, String pwd, HttpServletResponse response, HttpSession session) {
-		User user = biz.select(id).get(0);
+		ArrayList<User> users = biz.select(id);
 		String result = "";
+		
 		response.setCharacterEncoding("UTF-8");
-		if (user != null && pwd != null && !pwd.equals("") && user.getPwd().equals(pwd)) {
-			session.setAttribute("loginInfo", user);
+		
+		if (users.size() != 0 && pwd != null && !pwd.equals("") && users.get(0).getPwd().equals(pwd)) {
+			session.setAttribute("loginInfo", users.get(0));
 			session.setMaxInactiveInterval(1000);
 			result = "1";
+			
 			PrintWriter out;
 			try {
 				out = response.getWriter();
@@ -107,11 +110,14 @@ public class UserController {
 	@RequestMapping("/check.mc")
 	@ResponseBody
 	public void check(String id, HttpServletResponse response) {
-		User user = biz.select(id).get(0);
+		ArrayList<User> users = biz.select(id);
 		String result = "";
 		response.setCharacterEncoding("UTF-8");
 		
-		if(user == null) {
+		System.out.println(users);
+		System.out.println(users.size());
+		
+		if(users.size() == 0) {
 			try {
 				result = "1";
 				PrintWriter out = response.getWriter();
@@ -136,25 +142,26 @@ public class UserController {
 	@RequestMapping("/find.mc")
 	@ResponseBody
 	public void find(String id, String name, HttpServletResponse response, HttpSession session) {
-		User user = biz.select(id).get(0);
+		ArrayList<User> users = biz.select(id);
 		String result = ""; 
 		response.setCharacterEncoding("UTF-8");
 
-		if (user != null && name != null && !name.equals("") && user.getName().equals(name)) {
-			System.out.println(user);
+		if (users.size() != 0 && name != null && !name.equals("") && users.get(0).getName().equals(name)) {
+			System.out.println(users.get(0));
 			/*
 			 * session.setAttribute("findInfo", user); session.setMaxInactiveInterval(1000);
 			 * result = user.getPwd(); System.out.println(result);
 			 */
-			result = user.getHint();
+			result = users.get(0).getHint();
 			response.setContentType("text/json; charset=UTF-8");
 			
 			JSONObject jo = new JSONObject();
-			jo.put("id", user.getId());
-			jo.put("name", user.getName());
-			jo.put("hint", user.getHint());
-			jo.put("hint_answer", user.getHint_answer());
-			jo.put("pwd", user.getPwd());
+			
+			jo.put("id", users.get(0).getId());
+			jo.put("name", users.get(0).getName());
+			jo.put("hint", users.get(0).getHint());
+			jo.put("hint_answer", users.get(0).getHint_answer());
+			jo.put("pwd", users.get(0).getPwd());
 			
 			PrintWriter out;
 			try {
