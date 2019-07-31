@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -37,14 +38,11 @@ public class UserController {
 	public void loginimpl(String id, String pwd, HttpServletResponse response, HttpSession session) {
 		ArrayList<User> users = biz.select(id);
 		String result = "";
-		
 		response.setCharacterEncoding("UTF-8");
-		
 		if (users.size() != 0 && pwd != null && !pwd.equals("") && users.get(0).getPwd().equals(pwd)) {
 			session.setAttribute("loginInfo", users.get(0));
 			session.setMaxInactiveInterval(1000);
 			result = "1";
-			
 			PrintWriter out;
 			try {
 				out = response.getWriter();
@@ -110,12 +108,10 @@ public class UserController {
 	@RequestMapping("/check.mc")
 	@ResponseBody
 	public void check(String id, HttpServletResponse response) {
+		
 		ArrayList<User> users = biz.select(id);
 		String result = "";
 		response.setCharacterEncoding("UTF-8");
-		
-		System.out.println(users);
-		System.out.println(users.size());
 		
 		if(users.size() == 0) {
 			try {
@@ -147,7 +143,7 @@ public class UserController {
 		response.setCharacterEncoding("UTF-8");
 
 		if (users.size() != 0 && name != null && !name.equals("") && users.get(0).getName().equals(name)) {
-			System.out.println(users.get(0));
+//			System.out.println(users);
 			/*
 			 * session.setAttribute("findInfo", user); session.setMaxInactiveInterval(1000);
 			 * result = user.getPwd(); System.out.println(result);
@@ -156,7 +152,6 @@ public class UserController {
 			response.setContentType("text/json; charset=UTF-8");
 			
 			JSONObject jo = new JSONObject();
-			
 			jo.put("id", users.get(0).getId());
 			jo.put("name", users.get(0).getName());
 			jo.put("hint", users.get(0).getHint());

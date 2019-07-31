@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO W_USER VALUES (#{id},#{pwd},#{name},#{hint},#{hint_answer})
 	</insert>
 	<update id="update" parameterType="User">
-		UPDATE W_USER SET PWD=#{pwd},NAME=#{name} WHERE ID=#{id}
+		UPDATE W_USER SET PWD=#{pwd},NAME=#{name},HINT=#{hint},HINT_ANSWER=#{hint_answer} WHERE ID=#{id}
 	</update>
 	<delete id="delete" parameterType="String">
 		DELETE FROM W_USER WHERE ID=#{id}
