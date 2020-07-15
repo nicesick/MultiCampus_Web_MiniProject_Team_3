@@ -7,5 +7,43 @@
             location.href; // 현재 페이지 확인
 	 2) 값을 변경한다.(ex 다른 페이지로 이동)
 	    location.href="이동할 페이지 주소"; // 페이지 이동
+	--------------------------------------------------------------------------
+        Servlet Mapping으로 2)를 구현할 수 있다.
+	    Servlet Mapping 방법 두 가지
+	    1 - web.xml (web/WEB-INF/web.xml)
+	      
+	      web.xml 파일에 경로를 설정하면 모든 파일에 적용된다.
+	      => 다수의 요청을 받을 수 있게 url pattern으로 지정하는 것
+	      
+	      ex) 
+	      
+	      <servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.mc</url-pattern>
+	      </servlet-mapping>
+	    
+	    2 - 어노테이션 방법
+	     가장 위 클래스 상단에 @WebServlet("/매핑명")으로 매핑한다.
+	     
+	     
+	그렇다면 Mapping을 해주는 이유는 무엇인가 ?
+	1) 보안상에 있어 더 안전하다.
+	
+	full path : http://localhost:8080/프로젝트명/servlet/패키지명.클래스명		
+	=> full path로 나타내면 패키지명이나 해당 파일의 경로가 노출된다. 보안에 취약하기에 매핑을 사용하자.
+	
+	2) 주소가 간결해진다.
+	
+	url 매핑 후 http://localhost:8080/프로젝트명/URL명
+	=> 간결하게 표시 가능.
+	
+	* 참고 
+	.html을 .mc로 매핑하는 이유는 ?
+	
+	html은 정적으로 web 어플리케이션을 구동할 수 없다. 
+	따라서 동적으로 웹어플리케이션을 구동하기 위해 매핑을 해주고 프론트 컨트롤러에 이를 위임한다.
+	
+	--------------------------------------------------------------------------    
+		
 	*/
 </script>
